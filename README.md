@@ -1,4 +1,4 @@
-![logo_novo_site](https://github.com/DaviBCSouza/WebAcademy_Exercises/assets/117680329/19d37172-b975-43b6-8773-dbd7d1bc6954)
+![image](https://github.com/DaviBCSouza/WebAcademy_T3/assets/117680329/4289980e-9ce1-4106-899b-0c35c226dd8a)
 
 > Status: Cursando ⚠️
 
