@@ -1,0 +1,54 @@
+h1 {
+  font-family: helvetica, arial, sans-serif;
+  text-align: center;
+}
+
+body {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.galeria {
+  position: relative;
+  display: block;
+  border: 1px solid #00aaff;
+  width: 699px;
+  height: 480px;
+}
+
+.sobreposicao {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 699px;
+  height: 480px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+button {
+  background: rgba(150, 150, 150, 0.6);
+  text-shadow: 1px 1px 1px white;
+  border: 1px solid #999;
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  left: 2px;
+}
+
+button:hover {
+  background: rgba(100, 100, 100, 0.6);
+}
+
+.imagens {
+  display: flex;
+  padding-top: 5px;
+  gap: 5px;
+}
+
+.imagens img {
+  display: block;
+  width: 20%;
+  border: 1px solid #00aaff;
+  float: left;
+  cursor: pointer;
+}
