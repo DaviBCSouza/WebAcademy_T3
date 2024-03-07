@@ -1,0 +1,51 @@
+<body>
+  <h1>Várias listas</h1>
+
+  <p id="lista-titulo" name="lista">Lista de itens:</p>
+
+  <ul class="lista-itens-1">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-2">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-3">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-4">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <script>
+    // i) Percorra todos os itens da lista-itens-2 e altere o estilo de cor do texto para orange;
+    let list2 = document.querySelectorAll(".lista-itens-2 li");
+    list2.forEach((item) => {
+      item.style.color = "orange";
+    });
+
+    //ii) Percorra todos os itens da lista-itens-2, remova a classe "hot", se
+    // existir, e adicione uma nova classe "cold". Outra opção é
+    // percorrer os elementos e substituir diretamente a class "hot" por "cold".
+    list2.forEach((item) => {
+      let classeItem = item.getAttribute("class");
+      if (classeItem === "hot") {
+        item.setAttribute("class", "cold");
+      }
+    });
+  </script>
+</body>
