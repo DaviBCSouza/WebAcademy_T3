@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(../img/nebulosa.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-card {
+    border: 5px solid chocolate;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    height: 380px;
+    margin: 70px 60px;
+    padding: 20px;
+    text-align: center;
+    width: 230px;
+}
+
+.bg-card > div {
+    padding: 20px;
+}

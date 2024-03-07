@@ -1,0 +1,31 @@
+/* Exercício 3 */
+/* Posicione os quatro botões na posição indicada em seu conteúdo interno.
+Use um deslocamento de 15px em relação à posição indicada em cada botão, para que eles não fiquem colados nas bordas.
+*/
+
+.floating-btn {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  font-size: 20px;
+}
+.b1 {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+.b2 {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.b3 {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+.b4 {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
