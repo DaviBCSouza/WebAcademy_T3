@@ -1,0 +1,52 @@
+<body>
+  <h1>Várias listas</h1>
+
+  <div>
+    <p id="lista-titulo" name="lista">Lista de itens:</p>
+  </div>
+
+  <ul id="lista-itens-1">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <script>
+    // i) Imprima no console o primeiro e último filho da lista 1;
+    let list1 = document.getElementById("lista-itens-1");
+    let firstChild = list1.firstElementChild;
+    let lastChild = list1.lastElementChild;
+    console.log("Primeiro e último filho da lista 1:");
+    console.log(firstChild.textContent);
+    console.log(lastChild.textContent);
+
+    console.log("\n");
+
+    // ii) Imprima no console o elemento HTML pai da lista 1;
+    let paiElement = list1.parentNode;
+    console.log("Elemento pai da lista 1:");
+    console.log(paiElement.tagName);
+
+    console.log("\n");
+
+    // iii) Imprima no console todos os filhos da lista 1;
+    let childsList1 = list1.children;
+    console.log("Filhos da lista 1:");
+    for (let child of childsList1) {
+      console.log(child.textContent);
+    }
+
+    console.log("\n");
+
+    // iv) Imprima no console os irmãos do item com id = 'two'
+    let itemTwo = document.getElementById("two");
+    irmaosTwo = Array.from(itemTwo.parentElement.children).filter(
+      (item) => item !== itemTwo
+    );
+    console.log("Irmãos do item 'two':");
+    for (let irmao of irmaosTwo) {
+      console.log(irmao.textContent);
+    }
+  </script>
+</body>

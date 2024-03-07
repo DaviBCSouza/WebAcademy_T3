@@ -1,0 +1,55 @@
+<body>
+  <h1>To-do</h1>
+
+  <div>
+    <p id="lista-titulo" name="lista">Lista de atividades:</p>
+  </div>
+
+  <div>
+    <input id="novo-item" placeholder="Digite aqui o item" />
+    <button id="btn-adicionar">Adicionar</button>
+  </div>
+
+  <ul id="lista-itens">
+    <li>item a</li>
+  </ul>
+
+  <div>
+    <button id="btn-remover">Remover último item</button>
+  </div>
+
+  <script>
+    const novoItem = document.getElementById("novo-item");
+    const btnAdicionar = document.getElementById("btn-adicionar");
+    const listaItens = document.getElementById("lista-itens");
+    const btnRemover = document.getElementById("btn-remover");
+
+    // a) Implementar funcionalidade de adicionar novo item à lista, de forma
+    // dinâmica, a partir do campo de <input> e botão de “adicionar”
+    btnAdicionar.addEventListener("click", function () {
+      let textoNovoItem = novoItem.value.trim();
+
+      if (textoNovoItem !== "") {
+        let novoLi = document.createElement("li");
+        novoLi.textContent = textoNovoItem;
+        listaItens.appendChild(novoLi);
+        novoItem.value = "";
+      } else {
+        alert("Por favor, não deixe o campo vazio!");
+      }
+    });
+
+    // b) Implementar funcionalidade de remover último item da lista, de forma
+    // dinâmica, a partir do botão de “remover último item”
+    btnRemover.addEventListener("click", function () {
+      let itensLista = listaItens.getElementsByTagName("li");
+
+      if (itensLista.length > 0) {
+        let ultimoItem = itensLista[itensLista.length - 1];
+        listaItens.removeChild(ultimoItem);
+      } else {
+        alert("Não há itens para remover!");
+      }
+    });
+  </script>
+</body>
