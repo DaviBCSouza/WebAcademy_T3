@@ -1,0 +1,31 @@
+label {
+  display: inline-block;
+  width: 15vw;
+  padding: 15px;
+}
+
+button {
+  padding: 5px;
+  margin: 15px;
+}
+
+.bar {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.bar span {
+  display: block;
+  text-align: center;
+  background-color: darkred;
+  color: darkred;
+  padding: 5px;
+  transform: scaleY(-1);
+}
+
+#chart {
+  width: auto;
+  margin: 20px auto;
+  padding: 20px;
+  transform: scaleY(-1);
+}
