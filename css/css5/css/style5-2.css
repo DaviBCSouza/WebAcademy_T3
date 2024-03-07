@@ -1,0 +1,39 @@
+.container {
+    height: calc(100vh - 16px);
+    display: grid;
+    gap: 8px;
+    grid-template-areas:
+        "head head head head"
+        "nav nav main main"
+        "nav nav foot aside";
+}
+
+.container>header {
+    grid-area: head;
+    background-color: darkred;
+}
+
+.container>nav {
+    grid-area: nav;
+    background-color: darkgreen;
+}
+
+.container>main {
+    grid-area: main;
+    background-color: blueviolet;
+}
+
+.container>aside {
+    grid-area: aside;
+    background-color: darkgoldenrod;
+}
+
+.container>footer {
+    grid-area: foot;
+    background-color: darkblue;
+}
+
+.container>* {
+    border-radius: 15px;
+    margin: 10px;
+}
