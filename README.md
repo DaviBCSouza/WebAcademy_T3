@@ -11,3 +11,4 @@
 + Fundamentos de JavaScript
 + Controle de Versão
 + Introdução ao DOM
++ Introdução ao Framework Bootstrap
