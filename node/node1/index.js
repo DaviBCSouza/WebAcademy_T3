@@ -25,6 +25,9 @@ const server = http.createServer((req, res) => {
   });
 });
 
+// Configurando o dotenv
+require("dotenv").config();
+
 // Definindo a porta do servidor
 const PORT = process.env.PORT ?? 5000;
 
