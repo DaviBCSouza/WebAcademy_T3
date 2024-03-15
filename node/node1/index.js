@@ -12,9 +12,9 @@ if (!dir) {
 
 // Criando o servidor
 const server = http.createServer((req, res) => {
-  fs.readdir(param, (err, arquivos) => {
+  fs.readdir(dir, (err, arquivos) => {
     if (err) throw err;
-    let html = `<h4>Arquivos do Diretório "${param}"</h4>`;
+    let html = `<h4>Arquivos do Diretório "${dir}"</h4>`;
     arquivos.forEach((arquivo) => {
       html += `${arquivo}<br>`;
     });
