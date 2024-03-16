@@ -1,1 +1,15 @@
-esModule
+ESM é o sistema de módulo JavaScript padrão (ESM é um abreviamento para
+Módulos JavaScript que também é chamado de ESM, ou Módulos EcmaScript,
+em que “EcmaScript” é o nome oficial da especificação da linguagem
+JavaScript). ESM é o sistema de módulo “mais novo” e deve ser um
+substituto para o sistema de módulo Node.js atual, que é CommonJS
+(CJS para abreviar), embora o CommonJS provavelmente ainda estará
+conosco por muito, muito tempo. A sintaxe do módulo é esta:
+
+// add.js
+export function add(a, b) {
+  return a + b
+}
+
+// main.js
+import { add } from "./add.js"
