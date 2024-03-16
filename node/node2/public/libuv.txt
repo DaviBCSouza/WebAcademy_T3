@@ -1,0 +1,25 @@
+O Libuv é uma biblioteca open source que lida com a thread-pool,
+sinalização e comunicação entre processos, e toda a mágica
+necessária para fazer com que as tarefas assíncronas funcionem.
+O Libuv foi desenvolvido originalmente para o próprio Node.js
+como uma abstração em torno do libev, no entanto, hoje em dia,
+vários projetos já estão usando ela.
+
+A maioria das pessoas pensa que o libuv é o event loop em si, isso
+não é verdade, o libuv implementa um event loop com todos os recursos,
+mas também é a casa de várias outras partes principais do Node, como:
+
+    - Sockets TCP e UDP do pacote net
+    - Resoluções DNS assíncronas
+    - Operações assíncronas de arquivos e file system
+    - Eventos do file system
+    - IPC
+    - Child processes e controle de shell
+    - Controle de threads
+    - Sinalização
+    - Relógio de alta resolução
+
+É principalmente por isso que o Node.js usa esta biblioteca, ela é uma
+abstração completa em torno de várias partes principais de todos os
+sistemas operacionais e é necessário que todo o runtime interaja com o
+ambiente que há ao redor dele.

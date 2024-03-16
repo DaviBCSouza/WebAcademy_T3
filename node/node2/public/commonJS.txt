@@ -1,0 +1,13 @@
+CommonJS é um grupo de trabalho voluntário que projeta e implementa
+APIs de JavaScript para a declaração de módulos.
+
+Um módulo CommonJS é essencialmente uma peça reutilizável de
+JavaScript que exporta objetos específicos, tornando-os disponíveis
+para que outros módulos possam solicitá-las (em inglês, require) em
+seus programas. Se você já tiver programado em Node.js, estará
+bastante familiarizado com esse formato.
+
+Com o CommonJS, cada arquivo JavaScript armazena módulos em seu
+próprio contexto de módulo único (semelhante a envolvê-lo em uma
+closure). Neste escopo, usamos o objeto module.exports para expor
+os módulos e solicitamos sua importação.
