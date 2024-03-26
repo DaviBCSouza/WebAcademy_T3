@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Lembretes</title>
+    <link rel="stylesheet" href="./css/lembretes.css" />
+  </head>
+  <body>
+    <button id="botaoLogout">Logout</button>
+    <h1>Lista de Lembretes</h1>
+
+    <!-- Formulário para adicionar lembrete -->
+    <form id="formLembretes">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" required /><br />
+
+      <label for="dataLimite">Data Limite:</label>
+      <input type="datetime-local" id="dataLimite" required /><br />
+
+      <label for="descricao">Descrição:</label><br />
+      <textarea id="descricao" rows="4" required></textarea><br />
+
+      <button type="submit" id="botaoEnviar">Adicionar Lembrete</button>
+    </form>
+
+    <!-- Lista de lembretes -->
+    <ul id="listaLembretes"></ul>
+
+    <script src="./js/lembretes.js"></script>
+  </body>
+</html>

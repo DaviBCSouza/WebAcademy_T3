@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  align-items: center;
+  background-color: aliceblue;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+body > #botaoLogout {
+  background-color: red;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  padding: 5px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+body > #botaoLogout:hover {
+  background-color: darkred;
+}
+
+body > h1 {
+  margin-bottom: 5vh;
+}
+
+#formLembretes > * {
+  margin: 5px;
+  padding: 5px;
+}
+
+#formLembretes > input {
+  width: 100%;
+}
+
+#formLembretes > textarea {
+  width: 100%;
+}
+
+#formLembretes > #botaoEnviar {
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  width: 100%;
+}
+
+#formLembretes > #botaoEnviar:hover {
+  background-color: darkblue;
+}
+
+#listaLembretes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  #listaLembretes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#listaLembretes > * {
+  border: 1px solid black;
+  list-style-type: none;
+  margin: 8px;
+  padding: 8px;
+}
+
+.botaoEditar {
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.botaoEditar:hover {
+  background-color: darkblue;
+}
+
+.botaoRemover {
+  background-color: red;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.botaoRemover:hover {
+  background-color: darkred;
+}

@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  align-items: center;
+  background-color: aliceblue;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 25vh;
+}
+
+#formCadastro > * {
+  margin: 5px;
+  padding: 5px;
+}
+
+#formCadastro > input {
+  width: 100%;
+}
+
+#formCadastro > button {
+  align-self: center;
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+}
+
+#formCadastro > button:hover {
+  background-color: darkblue;
+}
