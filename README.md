@@ -12,3 +12,5 @@
 + Controle de Versão
 + Introdução ao DOM
 + Introdução ao Framework Bootstrap
++ Fundamentos de NodeJS
++ Fundamentos de TypeScript
