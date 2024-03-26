@@ -26,12 +26,10 @@ formRegistro.addEventListener("submit", (e) => {
   }
 
   // Verificando se o usuário já existe
-  let usuarioExistente: User[] = JSON.parse(
-    localStorage.getItem("users") || "[]"
-  );
-  let usuarios = usuarioExistente.some((user) => user.usuario === usuario);
+  let usuarios: User[] = JSON.parse(localStorage.getItem("users") || "[]");
+  let usuarioExistente = usuarios.some((user) => user.usuario === usuario);
 
-  if (usuarios) {
+  if (usuarioExistente) {
     alert("Este nome de usuário já está em uso.");
     return;
   }
@@ -42,8 +40,8 @@ formRegistro.addEventListener("submit", (e) => {
     senha: senha,
   };
 
-  usuarioExistente.push(novoUsuario);
-  localStorage.setItem("users", JSON.stringify(usuarioExistente));
+  usuarios.push(novoUsuario);
+  localStorage.setItem("users", JSON.stringify(usuarios));
 
   alert("Usuário registrado com sucesso!");
 
