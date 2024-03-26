@@ -11,10 +11,8 @@ formLogin.addEventListener("submit", function (event) {
   let senha = senhaInserida.value;
 
   // Verificando se o usuário existe
-  let usuarioExistente: User[] = JSON.parse(
-    localStorage.getItem("users") || "[]"
-  );
-  let usuario_ = usuarioExistente.find((user) => user.usuario === usuario);
+  let usuarios: User[] = JSON.parse(localStorage.getItem("users") || "[]");
+  let usuario_ = usuarios.find((user) => user.usuario === usuario);
 
   if (!usuario_ || usuario_.senha !== senha) {
     alert("Credenciais inválidas.");
@@ -24,9 +22,6 @@ formLogin.addEventListener("submit", function (event) {
   // Autenticando usuário
   localStorage.setItem("currentUser", JSON.stringify(usuario_));
   alert("Login bem-sucedido!");
-
-  let usuarioAtual = JSON.parse(localStorage.getItem("currentUser") || "{}");
-  console.log("Usuário após o login:", usuarioAtual);
 
   formLogin.reset();
 
