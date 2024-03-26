@@ -89,9 +89,7 @@ function removerLembrete(userId: string, index: number): void {
   renderizarListaLembretes();
 }
 
-carregarLembretes();
-
-// Formulário para adicionar o lembrete
+// Adicionando um Event Listener ao botão "Adicionar Lembrete"
 let formAdicionarLembretes = document.getElementById(
   "formLembretes"
 ) as HTMLFormElement;
@@ -286,7 +284,7 @@ function logout(): void {
   window.location.href = "./login.html";
 }
 
-// Adicionando um event listener para o botão de logout
+// Adicionando um Event Listener para o botão de logout
 const botaoLogout = document.getElementById("botaoLogout");
 if (botaoLogout) {
   botaoLogout.addEventListener("click", logout);
