@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  align-items: center;
+  background-color: aliceblue;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+body > button {
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 8px;
+  position: absolute;
+  top: 12vh;
+}
+
+body > button:hover {
+  background-color: darkblue;
+}
+
+.botaoAtivo {
+  background-color: red;
+  color: aliceblue;
+}
+
+.botaoAtivo:hover {
+  background-color: darkred;
+}
+
+#estatisticas {
+  border: 3px dotted gray;
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+  top: 1vh;
+  right: -35vw;
+}
+
+#estatisticas > p {
+  margin-top: 5px;
+}
+
+#formAlunos {
+  border: 1px solid gray;
+  text-align: center;
+  margin-top: -19vh;
+  width: 20%;
+}
+
+#adicionarAlunos {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#adicionarAlunos > label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 80%;
+}
+
+#adicionarAlunos > input {
+  text-align: center;
+  width: 50%;
+}
+
+#botoes {
+  display: flex;
+  align-self: flex-start;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+#addAlunoAleatorio {
+  background-color: greenyellow;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: black;
+  margin-top: 8px;
+  padding: 5px;
+}
+
+#addAlunoAleatorio:hover {
+  background-color: green;
+  color: aliceblue;
+}
+
+#addAlunoNormal {
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-left: 10px;
+  margin-right: 8px;
+  margin-top: 8px;
+  padding: 5px;
+}
+
+#addAlunoNormal:hover {
+  background-color: darkblue;
+}
+
+#listaAlunos > h2 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#listaAlunos > #alunos {
+  display: grid;
+  gap: 4vw;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  list-style-type: none;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+
+li > * {
+  margin-top: 4px;
+}
+
+.botaoEditar {
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-right: 8px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.botaoEditar:hover {
+  background-color: darkblue;
+}
+
+.botaoExcluir {
+  background-color: red;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  padding: 5px;
+}
+
+.botaoExcluir:hover {
+  background-color: darkred;
+}
+
+@media (max-width: 768px) {
+  body > button {
+    position: static;
+  }
+
+  #estatisticas {
+    position: static;
+  }
+
+  #formAlunos {
+    margin-top: 10px;
+    width: 80%;
+  }
+
+  #listaAlunos > #alunos {
+    gap: 4vw;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+  }
+}

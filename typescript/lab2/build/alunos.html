@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turma de Educação Física</title>
+    <link rel="stylesheet" href="./css/alunos.css" />
+  </head>
+  <body>
+    <h1>Turma de Educação Física</h1>
+
+    <div id="estatisticas">
+      <h2>Estatísticas da Turma</h2>
+      <p>Número de Alunos: <span id="numeroAlunos"></span></p>
+      <p>Média de Idades: <span id="mediaIdade"></span></p>
+      <p>Gênero Mais Comum: <span id="generoMaisComum"></span></p>
+      <p>Média de Alturas: <span id="mediaAltura"></span></p>
+      <p>Média de Pesos: <span id="mediaPeso"></span></p>
+      <p>Média de Aptidão Física: <span id="mediaAptFisica"></span></p>
+      <p>
+        Média de Frequência Cardíaca em Repouso:
+        <span id="mediaFreqCardiaca"></span>
+      </p>
+    </div>
+
+    <button type="button" onclick="alternarForm()">Exibir Formulário</button>
+
+    <div id="formAlunos" style="display: none">
+      <h2>Adicionar Aluno</h2>
+      <form id="adicionarAlunos">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" />
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" />
+        <label for="genero">Gênero:</label>
+        <select id="genero" name="genero">
+          <option value="male">Masculino</option>
+          <option value="female">Feminino</option>
+        </select>
+        <label for="altura">Altura (em metros):</label>
+        <input type="number" id="altura" name="altura" step="0.01" />
+        <label for="peso">Peso (em kg):</label>
+        <input type="number" id="peso" name="peso" step="0.01" />
+        <label for="aptFisica">Nível de Aptidão Física:</label>
+        <input type="number" id="aptFisica" name="aptFisica" min="1" max="10" />
+        <label for="freqCardiaca">Frequência Cardíaca em Repouso:</label>
+        <input type="number" id="freqCardiaca" name="freqCardiaca" />
+
+        <div id="botoes">
+          <button
+            type="button"
+            id="addAlunoAleatorio"
+            onclick="gerarAutomatico()"
+          >
+            Gerar Aluno Aleatório
+          </button>
+
+          <button type="button" id="addAlunoNormal" onclick="adicionarAluno()">
+            Adicionar Aluno
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="listaAlunos">
+      <h2>Lista de Alunos</h2>
+      <ul id="alunos"></ul>
+    </div>
+
+    <script src="./js/alunos.js"></script>
+  </body>
+</html>
