@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: aliceblue;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+}
+
+body > h1 {
+  margin-top: 25px;
+}
+
+body > button {
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-top: 25px;
+  padding: 5px;
+}
+
+body > button:hover {
+  background-color: darkblue;
+}
+
+.botaoAtivo {
+  background-color: red;
+  color: aliceblue;
+}
+
+.botaoAtivo:hover {
+  background-color: darkred;
+}
+
+#formAdicionarProdutos > h2 {
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+
+#formProdutos {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#formProdutos > label {
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+#formProdutos > select {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#formProdutos > input {
+  margin-bottom: 10px;
+  text-align: center;
+  width: 50%;
+}
+
+#formProdutos > #camposAdicionais {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+#formProdutos > #camposAdicionais label {
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+#formProdutos > #camposAdicionais input {
+  margin-bottom: 10px;
+  text-align: center;
+  width: 50%;
+}
+
+#formProdutos > button {
+  align-self: flex-start;
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-top: 15px;
+  padding: 5px;
+}
+
+#formProdutos > button:hover {
+  background-color: darkblue;
+}
+
+#carrinhoCompras {
+  margin-top: 5vh;
+  text-align: center;
+}
+
+#carrinhoCompras > #carrinho {
+  border: 1px solid gray;
+  list-style: none;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+#carrinhoCompras > #carrinho li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#carrinhoCompras > #carrinho li button {
+  margin-left: auto;
+  background-color: red;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: aliceblue;
+  padding: 5px;
+}
+
+#carrinhoCompras > #carrinho li button:hover {
+  background-color: darkred;
+}
+
+#carrinhoCompras > p {
+  margin-top: 10px;
+}
