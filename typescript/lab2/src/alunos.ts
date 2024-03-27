@@ -368,7 +368,6 @@ function renderizarListaAlunos(aluno: Aluno): void {
     let botaoSalvar = document.getElementById(
       "addAlunoNormal"
     ) as HTMLButtonElement;
-    botaoSalvar.textContent = "Salvar Mudança";
     botaoSalvar.onclick = () => salvarMudanças();
   });
 
