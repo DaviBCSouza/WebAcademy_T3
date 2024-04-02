@@ -1,1 +1,10 @@
+# Env
+.env
+
+# Logs
+!logs
+logs/*
+!logs/.gitkeep
+
+# Node
 node_modules/
