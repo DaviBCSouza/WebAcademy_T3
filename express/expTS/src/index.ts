@@ -20,7 +20,7 @@ app.engine(
   })
 );
 app.set('view engine', 'handlebars');
-app.set('views', `${__dirname}/views`);
+app.set('views', `${__dirname}/views/main`);
 
 app.use(router);
 
