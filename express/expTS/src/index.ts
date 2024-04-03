@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
-import express, { Request, Response } from 'express';
+import express from 'express';
 import logger from './middlewares/loggers';
+import router from './router/router';
 import validateEnv from './utils/validateEnv';
 
 dotenv.config();
@@ -11,9 +12,7 @@ const PORT = process.env.PORT ?? 5000;
 
 app.use(logger('completo'));
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!');
-});
+app.use(router);
 
 app.listen(PORT, () => {
   console.log(`Aplicação rodando em http://localhost:${PORT}`);
