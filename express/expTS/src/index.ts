@@ -13,7 +13,12 @@ const PORT = process.env.PORT ?? 5000;
 
 app.use(logger('completo'));
 
-app.engine('handlebars', engine());
+app.engine(
+  'handlebars',
+  engine({
+    helpers: require(`${__dirname}/views/helpers/helpers.ts`)
+  })
+);
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views`);
 
