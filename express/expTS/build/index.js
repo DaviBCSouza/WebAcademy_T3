@@ -19,7 +19,9 @@ app.use((0, loggers_1.default)('completo'));
 app.engine(
   'handlebars',
   (0, express_handlebars_1.engine)({
-    helpers: require(`${__dirname}/views/helpers/helpers.js`)
+    helpers: require(`${__dirname}/views/helpers/helpers.js`),
+    layoutsDir: `${__dirname}/views/layouts`,
+    defaultLayout: 'main'
   })
 );
 app.set('view engine', 'handlebars');

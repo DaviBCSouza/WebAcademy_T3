@@ -15,16 +15,14 @@ const lorem = (req, res) => {
 };
 const hb1 = (req, res) => {
     res.render('hb1', {
-        mensagem: 'Hello World with the Handlebars!',
-        layout: false
+        mensagem: 'Hello World with the Handlebars!'
     });
 };
 const hb2 = (req, res) => {
     res.render('hb2', {
         poweredByExpress: true,
         name: 'Express',
-        type: 'Framework',
-        layout: false
+        type: 'Framework'
     });
 };
 const hb3 = (req, res) => {
@@ -35,8 +33,7 @@ const hb3 = (req, res) => {
             { nome: 'Horácio Fernandes', sala: 1233 },
             { nome: 'Edleno Moura', sala: 1236 },
             { nome: 'Elaine Harada', sala: 1231 }
-        ],
-        layout: false
+        ]
     });
 };
 const hb3_1 = (req, res) => {
@@ -48,8 +45,7 @@ const hb3_1 = (req, res) => {
     ];
     res.render('hb3-1', {
         setor: 'Professores do ICOMP',
-        professores,
-        layout: false
+        professores
     });
 };
 const hb4 = (req, res) => {
@@ -64,8 +60,7 @@ const hb4 = (req, res) => {
     ];
     res.render('hb4', {
         title: 'Tecnologias baseadas no NodeJS:',
-        technologies,
-        layout: false
+        technologies
     });
 };
 const erro = (req, res) => {

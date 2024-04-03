@@ -16,7 +16,9 @@ app.use(logger('completo'));
 app.engine(
   'handlebars',
   engine({
-    helpers: require(`${__dirname}/views/helpers/helpers.ts`)
+    helpers: require(`${__dirname}/views/helpers/helpers.ts`),
+    layoutsDir: `${__dirname}/views/layouts`,
+    defaultLayout: 'main'
   })
 );
 app.set('view engine', 'handlebars');
