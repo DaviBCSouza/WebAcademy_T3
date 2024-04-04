@@ -6,11 +6,12 @@
 
 ## Cursos Concluídos:
 
-+ Fundamentos de HTML
-+ Fundamentos de CSS
-+ Fundamentos de JavaScript
-+ Controle de Versão
-+ Introdução ao DOM
-+ Introdução ao Framework Bootstrap
-+ Fundamentos de NodeJS
-+ Fundamentos de TypeScript
+- Fundamentos de HTML
+- Fundamentos de CSS
+- Fundamentos de JavaScript
+- Controle de Versão
+- Introdução ao DOM
+- Introdução ao Framework Bootstrap
+- Fundamentos de NodeJS
+- Fundamentos de TypeScript
+- Básico Express
