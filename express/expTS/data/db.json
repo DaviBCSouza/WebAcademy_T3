@@ -1,0 +1,34 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Smartphone Xiaomi Poco X6 Pro",
+      "preco": 2599,
+      "estoque": 100
+    },
+    {
+      "nome": "Tablet Samsung Tab S9",
+      "preco": "3999",
+      "estoque": "85",
+      "id": "2"
+    },
+    {
+      "nome": "Monitor Dell UltraSharp 24''",
+      "preco": "2199",
+      "estoque": "125",
+      "id": "3"
+    },
+    {
+      "id": "128f",
+      "nome": "Smartphone Motorola E22",
+      "preco": "1199",
+      "estoque": "70"
+    },
+    {
+      "nome": "PlayStation 5 Slim",
+      "preco": "3999",
+      "estoque": "75",
+      "id": "ba8a"
+    }
+  ]
+}

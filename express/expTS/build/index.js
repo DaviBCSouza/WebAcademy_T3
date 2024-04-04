@@ -16,7 +16,6 @@ dotenv_1.default.config();
 (0, validateEnv_1.default)();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT ?? 5000;
-app.use((0, loggers_1.default)('completo'));
 app.engine(
   'handlebars',
   (0, express_handlebars_1.engine)({
@@ -26,7 +25,7 @@ app.engine(
   })
 );
 app.set('view engine', 'handlebars');
-app.set('views', `${__dirname}/views/main`);
+app.set('views', `${__dirname}/views`);
 app.use('/html', express_1.default.static(`${__dirname}/../public/html`));
 app.use('/css', express_1.default.static(`${__dirname}/../public/css`));
 app.use('/js', [
@@ -42,6 +41,8 @@ app.use(
     prefix: '/css'
   })
 );
+app.use((0, loggers_1.default)('completo'));
+app.use(express_1.default.urlencoded({ extended: false }));
 app.use(router_1.default);
 app.listen(PORT, () => {
   console.log(`Aplicação rodando em http://localhost:${PORT}`);

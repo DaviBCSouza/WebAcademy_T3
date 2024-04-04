@@ -12,8 +12,6 @@ validateEnv();
 const app = express();
 const PORT = process.env.PORT ?? 5000;
 
-app.use(logger('completo'));
-
 app.engine(
   'handlebars',
   engine({
@@ -23,7 +21,7 @@ app.engine(
   })
 );
 app.set('view engine', 'handlebars');
-app.set('views', `${__dirname}/views/main`);
+app.set('views', `${__dirname}/views`);
 
 app.use('/html', express.static(`${__dirname}/../public/html`));
 app.use('/css', express.static(`${__dirname}/../public/css`));
@@ -41,6 +39,8 @@ app.use(
   })
 );
 
+app.use(logger('completo'));
+app.use(express.urlencoded({ extended: false }));
 app.use(router);
 
 app.listen(PORT, () => {

@@ -1,0 +1,33 @@
+<div class='d-flex justify-content-between'>
+  <h4>Listagem de Produtos</h4>
+  <a href='/produto/create' style='text-decoration: none;'>
+    <i class='bi bi-plus-circle-fill fs-5 text-secondary'></i>
+  </a>
+</div>
+
+<table class='table table-striped'>
+  <thead>
+    <th>Nome</th>
+    <th>Preço</th>
+    <th>Opções</th>
+  </thead>
+  <tbody>
+    {{#each produtos}}
+      <tr>
+        <td>{{nome}}</td>
+        <td>{{preco}}</td>
+        <td>
+          <a href='/produto/{{id}}' style='text-decoration: none;'>
+            <i class='bi bi-eye-fill fs-5 text-info'></i>
+          </a>
+          <a href='/produto/update/{{id}}' style='text-decoration: none;'>
+            <i class='bi bi-pencil-fill fs-5 text-secondary'></i>
+          </a>
+          <a href='/produto/remove/{{id}}' style='text-decoration: none;'>
+            <i class='bi bi-trash-fill fs-5 text-danger'></i>
+          </a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
