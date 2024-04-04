@@ -29,7 +29,10 @@ app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views/main`);
 app.use('/html', express_1.default.static(`${__dirname}/../public/html`));
 app.use('/css', express_1.default.static(`${__dirname}/../public/css`));
-app.use('/js', express_1.default.static(`${__dirname}/../public/js`));
+app.use('/js', [
+  express_1.default.static(`${__dirname}/../public/js`),
+  express_1.default.static(`${__dirname}/../node_modules/bootstrap/dist/js`)
+]);
 app.use('/img', express_1.default.static(`${__dirname}/../public/img`));
 app.use(
   (0, node_sass_middleware_1.default)({
