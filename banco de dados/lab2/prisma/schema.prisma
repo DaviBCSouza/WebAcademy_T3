@@ -44,14 +44,14 @@ model Modelo {
   produto_id  Int
   produtos    Produto   @relation(fields: [produto_id], references: [id])
   nome        String    @db.VarChar(100)
-  num_serie   NumSerie[]
+  num_serie   NumSerie?
   produto_modelo_num_serie ProdutoModeloNumSerie[]
 }
 
 // Definindo a tabela Número de Série
 model NumSerie {
   codigo    String @id @db.VarChar(100)
-  modelo_id Int
+  modelo_id Int @unique
   modelos   Modelo @relation(fields: [modelo_id], references: [id])
   produto_modelo_num_serie ProdutoModeloNumSerie[]
 }
@@ -65,7 +65,7 @@ model ProdutoModeloNumSerie {
   modelos Modelo @relation(fields: [modelo_id], references: [id])
   num_serie_cod String @db.VarChar(100)
   num_serie NumSerie @relation(fields: [num_serie_cod], references: [codigo])
-  compras Compra[]
+  compras Compra?
 }
 
 // Definindo a tabela Compra
@@ -78,7 +78,7 @@ model Compra {
   forma_pagamento String @db.VarChar(45)
   endereco_id Int
   endereco Endereco @relation(fields: [endereco_id], references: [id])
-  produto_modelo_num_serie_id Int
+  produto_modelo_num_serie_id Int @unique
   produto_modelo_num_serie ProdutoModeloNumSerie @relation(fields: [produto_modelo_num_serie_id], references: [id])
 }
 
