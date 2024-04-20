@@ -1,0 +1,108 @@
+// Definindo a tabela Cliente
+model Cliente {
+  cpf               String    @id @unique @db.VarChar(11)
+  nome              String    @db.VarChar(100)
+  data_nascimento   DateTime  @db.Date
+  celular           String    @db.VarChar(15)
+  email             String    @unique @db.VarChar(45)
+  endereco         Endereco[]
+  compras           Compra[]
+}
+
+// Definindo a tabela Endereço
+model Endereco {
+  id          Int       @id @default(autoincrement())
+  cliente_cpf String    @db.VarChar(11)
+  cliente     Cliente   @relation(fields: [cliente_cpf], references: [cpf])
+  rua         String    @db.VarChar(100)
+  numero      Int
+  cep         Int
+  cidade      String    @db.VarChar(45)
+  estado      String    @db.VarChar(45)
+  pais        String    @db.VarChar(45)
+  compras     Compra[]
+}
+
+// Definindo a tabela Produto
+model Produto {
+  id            Int       @id @default(autoincrement())
+  categoria_id  Int
+  categoria     Categoria @relation(fields: [categoria_id], references: [id])
+  modelo_id     Int
+  modelos       Modelo[]
+  nome          String    @db.VarChar(100)
+  descricao     String?   @db.VarChar(255)
+  fabricante    String    @db.VarChar(45)
+  preco         Float
+  estoque       Int
+  produto_modelo_num_serie ProdutoModeloNumSerie[]
+}
+
+// Definindo a tabela Modelo
+model Modelo {
+  id          Int       @id @default(autoincrement())
+  produto_id  Int
+  produtos    Produto   @relation(fields: [produto_id], references: [id])
+  nome        String    @db.VarChar(100)
+  num_serie   NumSerie?
+  produto_modelo_num_serie ProdutoModeloNumSerie[]
+}
+
+// Definindo a tabela Número de Série
+model NumSerie {
+  codigo                    String          @id @db.VarChar(100)
+  modelo_id                 Int             @unique
+  modelos                   Modelo          @relation(fields: [modelo_id], references: [id])
+  produto_modelo_num_serie  ProdutoModeloNumSerie[]
+}
+
+// Definindo a tabela de Relação com Produto | Modelo | NumSerie
+model ProdutoModeloNumSerie {
+  id                Int         @id @default(autoincrement())
+  produto_id        Int
+  produtos          Produto     @relation(fields: [produto_id], references: [id])
+  modelo_id         Int
+  modelos           Modelo      @relation(fields: [modelo_id], references: [id])
+  num_serie_cod     String      @db.VarChar(100)
+  num_serie         NumSerie    @relation(fields: [num_serie_cod], references: [codigo])
+  compras           Compra?
+}
+
+// Definindo a tabela Compra
+model Compra {
+  id                          Int                   @id @default(autoincrement())
+  cliente_cpf                 String                @db.VarChar(11)
+  cliente                     Cliente               @relation(fields: [cliente_cpf], references: [cpf])
+  data_hora                   DateTime
+  desconto                    Float?
+  forma_pagamento             String                @db.VarChar(45)
+  endereco_id                 Int
+  endereco                    Endereco              @relation(fields: [endereco_id], references: [id])
+  produto_modelo_num_serie_id Int                   @unique
+  produto_modelo_num_serie    ProdutoModeloNumSerie @relation(fields: [produto_modelo_num_serie_id], references: [id])
+}
+
+// Definindo a tabela Categoria
+model Categoria {
+  id              Int           @id @default(autoincrement())
+  nome            String        @db.VarChar(80)
+  sub_categorias  SubCategoria[]
+  produtos        Produto[]
+}
+
+// Definindo a tabela Sub-Categoria
+model SubCategoria {
+  id            Int         @id @default(autoincrement())
+  categoria_id  Int
+  categoria     Categoria   @relation(fields: [categoria_id], references: [id])
+  nome          String      @db.VarChar(80)
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
