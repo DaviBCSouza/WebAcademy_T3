@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `loja_online`.`produto_modelo_num_serie` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `produto_id` INT NOT NULL,
   `modelo_id` INT NOT NULL,
-  `num_serie_codigo` INT NOT NULL,
+  `num_serie_codigo` VARCHAR(100) NOT NULL,
   INDEX `fk_produto_modelo_num_serie_produto1_idx` (`produto_id` ASC) VISIBLE,
   INDEX `fk_produto_modelo_num_serie_modelo1_idx` (`modelo_id` ASC) VISIBLE,
   INDEX `fk_produto_modelo_num_serie_num_serie1_idx` (`num_serie_codigo` ASC) VISIBLE,
