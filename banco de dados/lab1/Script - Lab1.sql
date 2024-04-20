@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `loja_online`.`endereco` (
   `cliente_cpf` VARCHAR(11) NOT NULL,
   `rua` VARCHAR(100) NOT NULL,
   `numero` VARCHAR(8) NOT NULL,
-  `cep` VARCHAR(8) NOT NULL,
+  `cep` INT NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   `pais` VARCHAR(45) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `loja_online`.`produto` (
   `preco` DECIMAL(10,2) NOT NULL,
   `estoque` INT NOT NULL,
   `categoria_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `categoria_id`),
+  PRIMARY KEY (`id`),
   INDEX `fk_produto_categoria1_idx` (`categoria_id` ASC) VISIBLE,
   CONSTRAINT `fk_produto_categoria1`
     FOREIGN KEY (`categoria_id`)
@@ -118,13 +118,14 @@ ENGINE = InnoDB;
 -- Table `loja_online`.`produto_modelo_num_serie`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `loja_online`.`produto_modelo_num_serie` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `produto_id` INT NOT NULL,
   `modelo_id` INT NOT NULL,
-  `num_serie_codigo` VARCHAR(100) NOT NULL,
+  `num_serie_codigo` INT NOT NULL,
   INDEX `fk_produto_modelo_num_serie_produto1_idx` (`produto_id` ASC) VISIBLE,
   INDEX `fk_produto_modelo_num_serie_modelo1_idx` (`modelo_id` ASC) VISIBLE,
   INDEX `fk_produto_modelo_num_serie_num_serie1_idx` (`num_serie_codigo` ASC) VISIBLE,
-  PRIMARY KEY (`num_serie_codigo`, `modelo_id`, `produto_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_produto_modelo_num_serie_produto1`
     FOREIGN KEY (`produto_id`)
     REFERENCES `loja_online`.`produto` (`id`)
@@ -153,13 +154,11 @@ CREATE TABLE IF NOT EXISTS `loja_online`.`compra` (
   `desconto` DECIMAL(5,2) NULL,
   `forma_pagamento` VARCHAR(45) NOT NULL,
   `endereco_id` INT NOT NULL,
-  `produto_modelo_num_serie_num_serie_codigo` VARCHAR(100) NOT NULL,
-  `produto_modelo_num_serie_modelo_id` INT NOT NULL,
-  `produto_modelo_num_serie_produto_id` INT NOT NULL,
+  `produto_modelo_num_serie_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_compra_endereco1_idx` (`endereco_id` ASC) VISIBLE,
   INDEX `fk_compra_cliente1_idx` (`cliente_cpf` ASC) VISIBLE,
-  INDEX `fk_compra_produto_modelo_num_serie1_idx` (`produto_modelo_num_serie_num_serie_codigo` ASC, `produto_modelo_num_serie_modelo_id` ASC, `produto_modelo_num_serie_produto_id` ASC) VISIBLE,
+  INDEX `fk_compra_produto_modelo_num_serie1_idx` (`produto_modelo_num_serie_id` ASC) VISIBLE,
   CONSTRAINT `fk_compra_endereco1`
     FOREIGN KEY (`endereco_id`)
     REFERENCES `loja_online`.`endereco` (`id`)
@@ -171,8 +170,8 @@ CREATE TABLE IF NOT EXISTS `loja_online`.`compra` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_compra_produto_modelo_num_serie1`
-    FOREIGN KEY (`produto_modelo_num_serie_num_serie_codigo` , `produto_modelo_num_serie_modelo_id` , `produto_modelo_num_serie_produto_id`)
-    REFERENCES `loja_online`.`produto_modelo_num_serie` (`num_serie_codigo` , `modelo_id` , `produto_id`)
+    FOREIGN KEY (`produto_modelo_num_serie_id`)
+    REFERENCES `loja_online`.`produto_modelo_num_serie` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
