@@ -16,7 +16,7 @@ model Endereco {
   cliente     Cliente   @relation(fields: [cliente_cpf], references: [cpf])
   rua         String    @db.VarChar(100)
   numero      Int
-  cep         String    @db.VarChar(8)
+  cep         Int
   cidade      String    @db.VarChar(45)
   estado      String    @db.VarChar(45)
   pais        String    @db.VarChar(45)
