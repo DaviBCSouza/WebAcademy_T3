@@ -15,3 +15,5 @@
 - Fundamentos de NodeJS
 - Fundamentos de TypeScript
 - Básico Express
+- Nivelamento de Banco de Dados
+- Fundamentos de Banco de Dados
