@@ -14,6 +14,12 @@ validateEnv();
 const app = express();
 const PORT = process.env.PORT ?? 5000;
 
+declare module "express-session" {
+  interface SessionData {
+    uid: string;
+    tipoUsuario: string;
+  }
+}
 app.use(
   session({
     genid: (req) => uuidv4(),
