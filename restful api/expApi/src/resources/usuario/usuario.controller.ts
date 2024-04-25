@@ -10,6 +10,7 @@ import {
 } from "./usuario.service";
 import { CreateUsuarioDto, UpdateUsuarioDto } from "./usuario.types";
 
+// Controlador para o "/v1/usuario"
 const index = async (req: Request, res: Response) => {
   try {
     const usuarios = await getAllUsuarios();
@@ -19,6 +20,7 @@ const index = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para o "/v1/usuario"
 const create = async (req: Request, res: Response) => {
   const usuario = req.body as CreateUsuarioDto;
   try {
@@ -29,6 +31,7 @@ const create = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para o "/v1/usuario/'id'"
 const read = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -41,6 +44,7 @@ const read = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para o "/v1/usuario/email/'email'"
 const readEmail = async (req: Request, res: Response) => {
   const { email } = req.params;
   try {
@@ -53,6 +57,7 @@ const readEmail = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para o "/v1/usuario/'id'"
 const update = async (req: Request, res: Response) => {
   const { id } = req.params;
   const usuario = req.body as UpdateUsuarioDto;
@@ -64,6 +69,7 @@ const update = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para o "/v1/usuario/'id'"
 const remove = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
