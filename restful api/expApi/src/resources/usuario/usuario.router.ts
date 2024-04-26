@@ -10,16 +10,16 @@ const router = Router();
 router.get("/", isAuth, usuarioController.index);
 router.post(
   "/",
-  isAdmin,
   validateBody(usuarioSchema),
+  isAdmin,
   usuarioController.create
 );
 router.get("/:id", isAuth, usuarioController.read);
 router.get("/email/:email", isAuth, usuarioController.readEmail);
 router.put(
   "/:id",
-  isAdmin,
   validateBody(usuarioSchema),
+  isAdmin,
   usuarioController.update
 );
 router.delete("/:id", isAdmin, usuarioController.remove);

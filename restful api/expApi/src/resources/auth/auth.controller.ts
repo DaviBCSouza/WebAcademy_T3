@@ -47,6 +47,7 @@ const logout = async (req: Request, res: Response) => {
       if (err) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
       } else {
+        res.clearCookie("connect.sid", { path: "/" });
         res
           .status(StatusCodes.OK)
           .json({ msg: "Logout realizado com sucesso" });
