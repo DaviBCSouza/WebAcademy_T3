@@ -10,6 +10,7 @@ import {
 } from "./compra.service";
 import { CreateCompraDto, UpdateCompraDto } from "./compra.types";
 
+// Controlador para listar todas as compras em "v1/compra/"
 const index = async (req: Request, res: Response) => {
   try {
     const compras = await listCompras();
@@ -19,6 +20,7 @@ const index = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para criar uma compra sem produtos em "v1/compra/"
 const create = async (req: Request, res: Response) => {
   const compra = req.body as CreateCompraDto;
   try {
@@ -29,6 +31,7 @@ const create = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para pegar uma compra em "v1/compra/'id'"
 const read = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -41,6 +44,7 @@ const read = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para atualizar as informações de uma compra em "v1/compra/'id'"
 const update = async (req: Request, res: Response) => {
   const { id } = req.params;
   const compra = req.body as UpdateCompraDto;
@@ -52,6 +56,7 @@ const update = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para excluir uma compra em "v1/compra/'id'"
 const remove = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -62,6 +67,7 @@ const remove = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para adicionar produtos ao carrinho em "v1/compra/adicionar"
 const addProduto = async (req: Request, res: Response) => {
   const { produtoId, quantidade } = req.body;
   try {
@@ -84,6 +90,7 @@ const addProduto = async (req: Request, res: Response) => {
   }
 };
 
+// Controlador para concluir uma compra em "v1/compra/concluir"
 const checkoutCompra = async (req: Request, res: Response) => {
   try {
     const usuarioId = req.session.uid as string;
