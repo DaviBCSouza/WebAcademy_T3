@@ -18,8 +18,10 @@ declare module "express-session" {
   interface SessionData {
     uid: string;
     tipoUsuario: string;
+    carrinho: { [produtoId: string]: number };
   }
 }
+
 app.use(
   session({
     genid: (req) => uuidv4(),
