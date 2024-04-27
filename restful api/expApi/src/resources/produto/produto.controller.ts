@@ -12,6 +12,12 @@ import { CreateProdutoDto, UpdateProdutoDto } from "./produto.types";
 
 // Controlador para o "/v1/produto/"
 const index = async (req: Request, res: Response) => {
+  /*
+   #swagger.summary = 'Lista todos os produtos.'
+   #swagger.responses[200] = { description: 'Lista de produtos retornada com sucesso.' }
+   #swagger.responses[500] = { description: 'Erro interno do servidor.' }
+  */
+
   try {
     const produtos = await listProdutos();
     res.status(StatusCodes.OK).json(produtos);
@@ -22,6 +28,18 @@ const index = async (req: Request, res: Response) => {
 
 // Controlador de criar um produto para o "/v1/produto/"
 const create = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'Adiciona um novo produto na base.'
+ #swagger.parameters['body'] = {
+ description: 'Objeto contendo os dados do produto',
+ in: 'body',
+ schema: { $ref: '#/definitions/CreateProdutoDto' }
+ }
+ #swagger.responses[200] = {
+ schema: { $ref: '#/definitions/Produto' }
+ }
+ */
+
   const produto = req.body as CreateProdutoDto;
   try {
     if (await checkNomeIsAvaliable(produto.nome)) {
@@ -37,6 +55,14 @@ const create = async (req: Request, res: Response) => {
 
 // Controlador de pegar um produto para o "/v1/produto/:id"
 const read = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'Recupera dados de um produto específico.'
+ #swagger.parameters['id'] = { description: 'ID do produto' }
+ #swagger.responses[200] = {
+ schema: { $ref: '#/definitions/Produto' }
+ }
+ */
+
   const { id } = req.params;
   try {
     const produto = await getProduto(id);
@@ -50,6 +76,20 @@ const read = async (req: Request, res: Response) => {
 
 // Controlador de atualizar um produto para o "/v1/produto/:id"
 const update = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'Atualiza dados de um produto específico.'
+ #swagger.parameters['id'] = { description: 'ID do produto' }
+  #swagger.parameters['body'] = {
+ description: 'Objeto contendo as alterações do produto',
+ in: 'body',
+ schema: { $ref: '#/definitions/UpdateProdutoDto' }
+ }
+ #s
+ #swagger.responses[204] = { description: 'Atualização bem-sucedida.' }
+ #swagger.responses[404] = { description: 'Produto não encontrado.' }
+ #swagger.responses[409] = { description: 'Nome de produto já existente.' }
+ */
+
   const { id } = req.params;
   const produto = req.body as UpdateProdutoDto;
   try {
@@ -66,6 +106,13 @@ const update = async (req: Request, res: Response) => {
 
 // Controlador de remover um produto para o "/v1/produto/:id"
 const remove = async (req: Request, res: Response) => {
+  /*
+   #swagger.summary = 'Remove um produto específico.'
+   #swagger.parameters['id'] = { description: 'ID do produto' }
+   #swagger.responses[204] = { description: 'Remoção bem-sucedida.' }
+   #swagger.responses[404] = { description: 'Produto não encontrado.' }
+  */
+
   const { id } = req.params;
   try {
     const deletedProduto = await deleteProduto(id);
