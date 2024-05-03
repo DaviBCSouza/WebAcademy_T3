@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: livros_backend
+    build:
+      context: ./webacademy-livros-backend
+    volumes:
+      - ./webacademy-livros-backend/log:/app/log
+      - backend_logs:/app/log
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+
+  frontend:
+    container_name: livros_frontend
+    build:
+      context: ./webacademy-livros-frontend
+    ports:
+      - ${FRONTEND_PORT}:80
+
+  db:
+    container_name: livros_db
+    image: mysql:8.4.0
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - mysql_config:/etc/mysql
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+
+  phpmyadmin:
+    container_name: livros_pma
+    image: phpmyadmin:5.2.1-apache
+    environment:
+      - PMA_HOST=livros_db
+      - PMA_PORT=${MYSQL_PORT}
+      - PMA_USER=${MYSQL_USER}
+      - PMA_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - ${PMA_PORT}:80
+
+volumes:
+  backend_logs:
+  mysql_data:
+  mysql_config:

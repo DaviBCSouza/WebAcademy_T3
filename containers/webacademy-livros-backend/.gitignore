@@ -1,0 +1,11 @@
+# Diretório 'dist/'
+dist/
+
+# Diretório de Logs
+log/
+
+# Diretório dos Módulos Node
+node_modules/
+
+# Arquivo de configuração Typescript
+tsconfig.tsbuildinfo
