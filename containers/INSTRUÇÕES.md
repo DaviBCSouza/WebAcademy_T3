@@ -1,12 +1,16 @@
+![Logo Docker](https://wallpapercave.com/wp/wp8114614.png)
+
 # Contêineres com Docker
 
 > Status: Finalizado ✅
+
+### 💡 **Dica:** Utilize o VS Code.
 
 ## Passos para criar os containers e imagens no Docker:
 
 - Entre no diretório `containers` onde há o arquivo `docker-compose.yml`, se caso não estiver, com o comando `$ cd containers` você conseguirá entrar no diretório (dependendo de onde estiver, obedeça a hierarquia de arquivos).
 
-- Abra o terminal com `Ctrl + J` (Recomendo utlizar o VS Code).
+- Abra o terminal com `Ctrl + J`.
 
 - Digite o seguinte comando `$ docker compose up` e aguarde.
 
