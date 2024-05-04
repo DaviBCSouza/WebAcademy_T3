@@ -2,9 +2,13 @@ import Image from "next/image";
 
 interface CardProdutoProps {
   produto: Produto;
+  adicionarAoCarrinho: (produto: Produto) => void;
 }
 
-export default function cardProduto({ produto }: CardProdutoProps) {
+export default function cardProduto({
+  produto,
+  adicionarAoCarrinho,
+}: CardProdutoProps) {
   return (
     <div className="col">
       <div className="card shadow-sm h-100">
@@ -19,7 +23,11 @@ export default function cardProduto({ produto }: CardProdutoProps) {
         <div className="card-body bg-light">
           <h5 className="card-title">{produto.nome}</h5>
           <p className="card-text text-secondary">R$ {produto.preco}</p>
-          <button className="btn btn-dark d-block w-100" type="button">
+          <button
+            className="btn btn-dark d-block w-100"
+            type="button"
+            onClick={() => adicionarAoCarrinho(produto)}
+          >
             Adicionar no carrinho
           </button>
         </div>

@@ -1,12 +1,28 @@
 "use client";
 
+import { useState } from "react";
 import ListagemCarrinho from "../components/ListagemCarrinho";
 import Navbar from "../components/Navbar";
 import ResumoCarrinho from "../components/ResumoCarrinho";
 import { mockItensCarrinho } from "../mocks/itemsCarrinho";
 
 export default function Carrinho() {
-  const items = mockItensCarrinho;
+  const [itensCarrinho, setItensCarrinho] =
+    useState<ItemCarrinho[]>(mockItensCarrinho);
+
+  const removerItemDoCarrinho = (id: number): void => {
+    const novoCarrinho = itensCarrinho.filter((item) => item.id !== id);
+    setItensCarrinho(novoCarrinho);
+  };
+
+  const quantidadeTotal = itensCarrinho.reduce(
+    (total, item) => total + item.quantidade,
+    0
+  );
+  const precoTotal = itensCarrinho.reduce(
+    (total, item) => total + item.preco * item.quantidade,
+    0
+  );
 
   return (
     <>
@@ -20,12 +36,18 @@ export default function Carrinho() {
                 Produtos selecionados
               </h5>
               <div className="table-responsive">
-                <ListagemCarrinho items={items} />
+                <ListagemCarrinho
+                  items={itensCarrinho}
+                  removerItemDoCarrinho={removerItemDoCarrinho}
+                />
               </div>
             </div>
           </div>
 
-          <ResumoCarrinho quantidadeTotal={0} precoTotal={0} />
+          <ResumoCarrinho
+            quantidadeTotal={quantidadeTotal}
+            precoTotal={precoTotal}
+          />
         </div>
       </main>
     </>

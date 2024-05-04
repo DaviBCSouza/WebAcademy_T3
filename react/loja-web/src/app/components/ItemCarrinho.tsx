@@ -1,8 +1,12 @@
 interface ItemCarrinhoProps {
   item: ItemCarrinho;
+  removerItemDoCarrinho: (id: number) => void;
 }
 
-export default function ItemCarrinho({ item }: Readonly<ItemCarrinhoProps>) {
+export default function ItemCarrinho({
+  item,
+  removerItemDoCarrinho,
+}: Readonly<ItemCarrinhoProps>) {
   const valorTotalProduto = item.preco * item.quantidade;
 
   return (
@@ -13,7 +17,12 @@ export default function ItemCarrinho({ item }: Readonly<ItemCarrinhoProps>) {
 
       <td>R$ {valorTotalProduto.toFixed(2)}</td>
       <td>
-        <button className="btn btn-danger btn-sm">Remover</button>
+        <button
+          className="btn btn-danger btn-sm"
+          onClick={() => removerItemDoCarrinho(item.id!)}
+        >
+          Remover
+        </button>
       </td>
     </tr>
   );

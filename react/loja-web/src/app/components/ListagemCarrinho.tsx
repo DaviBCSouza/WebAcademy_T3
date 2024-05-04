@@ -2,11 +2,13 @@ import ItemCarrinho from "./ItemCarrinho";
 
 interface ListagemCarrinhoProps {
   items: ItemCarrinho[];
+  removerItemDoCarrinho: (id: number) => void;
 }
 
 export default function ListagemCarrinho({
   items,
-}: Readonly<ListagemCarrinhoProps>) {
+  removerItemDoCarrinho,
+}: ListagemCarrinhoProps) {
   return (
     <table className="table ">
       <thead>
@@ -20,7 +22,11 @@ export default function ListagemCarrinho({
       </thead>
       <tbody>
         {items.map((item) => (
-          <ItemCarrinho key={item.id} item={item} />
+          <ItemCarrinho
+            key={item.id}
+            item={item}
+            removerItemDoCarrinho={removerItemDoCarrinho}
+          />
         ))}
       </tbody>
     </table>
