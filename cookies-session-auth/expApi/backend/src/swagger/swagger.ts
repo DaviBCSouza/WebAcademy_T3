@@ -12,7 +12,7 @@ const doc = {
   definitions: {
     Usuario: {
       id: "412507fb-e547-471a-9b67-46e10a046daa",
-      nome: "Joana da Silva",
+      nome: "Maria Joana da Silva",
       email: "joana.s@gmail.com",
       senha: "$2a$15$QpCmQ0wX5MO2Qpe..wtIwuv1e1QEAYJQi7zXHZlX8mwCpvzQ9TWTi",
       tipoUsuarioId: "b994aeb7-8280-41ce-8bd9-67e173b83991",

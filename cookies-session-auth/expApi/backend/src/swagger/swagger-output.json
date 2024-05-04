@@ -583,7 +583,7 @@
         },
         "nome": {
           "type": "string",
-          "example": "Joana da Silva"
+          "example": "Maria Joana da Silva"
         },
         "email": {
           "type": "string",
