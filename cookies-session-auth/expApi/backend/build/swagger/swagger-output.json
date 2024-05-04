@@ -1,0 +1,916 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API da Loja virtual",
+        "description": "Documentação da API",
+        "version": "1.0.0"
+    },
+    "host": "localhost:1100",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v1/signup": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Cadastra um novo usuário.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados do novo usuário.",
+                        "schema": {
+                            "$ref": "#/definitions/SignUpDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Usuário cadastrado com sucesso.",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    },
+                    "400": {
+                        "description": "E-mail informado já está sendo utilizado."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Autentica o usuário.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Credenciais de login.",
+                        "schema": {
+                            "$ref": "#/definitions/LoginDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário autenticado com sucesso."
+                    },
+                    "401": {
+                        "description": "Email e/ou senha incorretos."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Realiza o logout do usuário.",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "Logout realizado com sucesso."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/language/": {
+            "post": {
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Altera o idioma da aplicação.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Objeto contendo o novo idioma.",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeLangDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Idioma alterado com sucesso."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/usuario/": {
+            "get": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Lista todos os usuários.",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "Lista de usuários retornada com sucesso."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Cria um novo usuário.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados do novo usuário.",
+                        "schema": {
+                            "$ref": "#/definitions/CreateUsuarioDto"
+                        }
+                    },
+                    {
+                        "name": "tipoUsuario",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado com sucesso.",
+                        "schema": {
+                            "$ref": "#/definitions/UsuarioDto"
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/usuario/{id}": {
+            "get": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Recupera dados de um usuário específico por ID.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID do usuário"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário encontrado.",
+                        "schema": {
+                            "$ref": "#/definitions/UsuarioDto"
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Atualiza dados de um usuário específico.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID do usuário"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados atualizados do usuário.",
+                        "schema": {
+                            "$ref": "#/definitions/UpdateUsuarioDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Atualização bem-sucedida."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Remove um usuário específico.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID do usuário"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Remoção bem-sucedida."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/compra/": {
+            "get": {
+                "tags": [
+                    "Compra"
+                ],
+                "summary": "Lista todas as compras.",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "Lista de compras retornada com sucesso.",
+                        "schema": {
+                            "$ref": "#/definitions/Compra"
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Compra"
+                ],
+                "summary": "Cria uma nova compra sem produtos.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados da nova compra.",
+                        "schema": {
+                            "$ref": "#/definitions/CreateCompraDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Compra criada com sucesso.",
+                        "schema": {
+                            "$ref": "#/definitions/Compra"
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/compra/{id}": {
+            "get": {
+                "tags": [
+                    "Compra"
+                ],
+                "summary": "Recupera dados de uma compra específica por ID.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID da compra"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Compra encontrada.",
+                        "schema": {
+                            "$ref": "#/definitions/Compra"
+                        }
+                    },
+                    "404": {
+                        "description": "Compra não encontrada."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Compra"
+                ],
+                "summary": "Atualiza informações de uma compra específica.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID da compra"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados atualizados da compra.",
+                        "schema": {
+                            "$ref": "#/definitions/UpdateCompraDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Atualização bem-sucedida."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Compra"
+                ],
+                "summary": "Remove uma compra específica.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID da compra"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Remoção bem-sucedida."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/compra/adicionar": {
+            "post": {
+                "tags": [
+                    "Compra"
+                ],
+                "summary": "Adiciona produtos ao carrinho de compras.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Informações do produto a ser adicionado ao carrinho.",
+                        "schema": {
+                            "$ref": "#/definitions/AddProduto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto adicionado ao carrinho com sucesso.",
+                        "schema": {
+                            "$ref": "#/definitions/Carrinho"
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/compra/concluir": {
+            "post": {
+                "tags": [
+                    "Compra"
+                ],
+                "summary": "Conclui uma compra.",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "Compra concluída com sucesso.",
+                        "schema": {
+                            "$ref": "#/definitions/Checkout"
+                        }
+                    },
+                    "400": {
+                        "description": "Carrinho de compras vazio."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        },
+        "/v1/produto/": {
+            "get": {
+                "tags": [
+                    "Produto"
+                ],
+                "summary": "Lista todos os produtos.",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "Lista de produtos retornada com sucesso."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Produto"
+                ],
+                "summary": "Adiciona um novo produto na base.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "description": "Objeto contendo os dados do produto",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/CreateProdutoDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Produto"
+                        },
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/v1/produto/{id}": {
+            "get": {
+                "tags": [
+                    "Produto"
+                ],
+                "summary": "Recupera dados de um produto específico.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID do produto"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Produto"
+                        },
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Produto"
+                ],
+                "summary": "Atualiza dados de um produto específico.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID do produto"
+                    },
+                    {
+                        "name": "body",
+                        "description": "Objeto contendo as alterações do produto",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/UpdateProdutoDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Atualização bem-sucedida."
+                    },
+                    "404": {
+                        "description": "Produto não encontrado."
+                    },
+                    "409": {
+                        "description": "Nome de produto já existente."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Produto"
+                ],
+                "summary": "Remove um produto específico.",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID do produto"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Remoção bem-sucedida."
+                    },
+                    "404": {
+                        "description": "Produto não encontrado."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Usuario": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "412507fb-e547-471a-9b67-46e10a046daa"
+                },
+                "nome": {
+                    "type": "string",
+                    "example": "Joana da Silva"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "joana.s@gmail.com"
+                },
+                "senha": {
+                    "type": "string",
+                    "example": "$2a$15$QpCmQ0wX5MO2Qpe..wtIwuv1e1QEAYJQi7zXHZlX8mwCpvzQ9TWTi"
+                },
+                "tipoUsuarioId": {
+                    "type": "string",
+                    "example": "b994aeb7-8280-41ce-8bd9-67e173b83991"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "example": "2024-04-26T03:43:15.354Z"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "example": "2024-04-26T03:43:15.354Z"
+                }
+            }
+        },
+        "SignUpDto": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "example": "Joana da Silva"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "joana.s@gmail.com"
+                },
+                "senha": {
+                    "type": "string",
+                    "example": "pass123"
+                }
+            }
+        },
+        "LoginDto": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "joana.s@gmail.com"
+                },
+                "senha": {
+                    "type": "string",
+                    "example": "pass123"
+                }
+            }
+        },
+        "UsuarioDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "dc82ec3e-c63a-4f1a-8528-97079f98d5e8"
+                },
+                "nome": {
+                    "type": "string",
+                    "example": "Minnie Koss"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "Michel_Reichel40@hotmail.com"
+                },
+                "senha": {
+                    "type": "string",
+                    "example": "$2a$15$ycmbge0h5RBIMY1abI4Xqu1KHPheWAwWOa0afxLPnD/GsOKMa72Xa"
+                },
+                "tipoUsuarioId": {
+                    "type": "string",
+                    "example": "b994aeb7-8280-41ce-8bd9-67e173b83991"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "example": "2024-04-25T15:21:13.930Z"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "example": "2024-04-25T15:21:13.930Z"
+                }
+            }
+        },
+        "CreateUsuarioDto": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "example": "Minnie Koss"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "Michel_Reichel40@hotmail.com"
+                },
+                "senha": {
+                    "type": "string",
+                    "example": "senha123"
+                }
+            }
+        },
+        "UpdateUsuarioDto": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "example": "Jeff Kilback"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "Trey.Lakin@gmail.com"
+                },
+                "senha": {
+                    "type": "string",
+                    "example": "senha123"
+                }
+            }
+        },
+        "Produto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "8a2053de-5d92-4c43-97c0-c9b2b0d56703"
+                },
+                "nome": {
+                    "type": "string",
+                    "example": "Cadeira"
+                },
+                "preco": {
+                    "type": "number",
+                    "example": 15.99
+                },
+                "estoque": {
+                    "type": "number",
+                    "example": 10
+                },
+                "createdAt": {
+                    "type": "string",
+                    "example": "2024-04-26T17:19:15.645Z"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "example": "2023-04-26T17:19:15.645Z"
+                }
+            }
+        },
+        "CreateProdutoDto": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "example": "Cadeira"
+                },
+                "preco": {
+                    "type": "number",
+                    "example": 15.99
+                },
+                "estoque": {
+                    "type": "number",
+                    "example": 10
+                }
+            }
+        },
+        "UpdateProdutoDto": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string",
+                    "example": "Mesa"
+                },
+                "preco": {
+                    "type": "number",
+                    "example": 29.9
+                },
+                "estoque": {
+                    "type": "number",
+                    "example": 15
+                }
+            }
+        },
+        "Compra": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "adea68d3-ff25-4e7d-b4a3-d1de420fc9ef"
+                },
+                "usuarioId": {
+                    "type": "string",
+                    "example": "8027b18d-3757-4b91-83fe-213aae889bd2"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "example": "2024-04-26T19:45:14.626Z"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "example": "2024-04-26T19:45:14.626Z"
+                }
+            }
+        },
+        "CreateCompraDto": {
+            "type": "object",
+            "properties": {
+                "usuarioId": {
+                    "type": "string",
+                    "example": "8027b18d-3757-4b91-83fe-213aae889bd2"
+                }
+            }
+        },
+        "UpdateCompraDto": {
+            "type": "object",
+            "properties": {
+                "usuarioId": {
+                    "type": "string",
+                    "example": "d94abff2-a6f3-4511-b8ac-8082381a949c"
+                }
+            }
+        },
+        "AddProduto": {
+            "type": "object",
+            "properties": {
+                "usuarioId": {
+                    "type": "string",
+                    "example": "d94abff2-a6f3-4511-b8ac-8082381a949c"
+                },
+                "produtoId": {
+                    "type": "string",
+                    "example": "4b3c2b4c-9af2-43cf-870e-34bfdefb4d37"
+                },
+                "quantidade": {
+                    "type": "number",
+                    "example": 2
+                }
+            }
+        },
+        "Carrinho": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "Produto adicionado ao carrinho com sucesso"
+                },
+                "carrinho": {
+                    "type": "object",
+                    "properties": {
+                        "4b3c2b4c-9af2-43cf-870e-34bfdefb4d37": {
+                            "type": "number",
+                            "example": 2
+                        }
+                    }
+                }
+            }
+        },
+        "Checkout": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "Compra concluída com sucesso"
+                },
+                "compra": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "example": "adea68d3-ff25-4e7d-b4a3-d1de420fc9ef"
+                        },
+                        "usuarioId": {
+                            "type": "string",
+                            "example": "d94abff2-a6f3-4511-b8ac-8082381a949c"
+                        },
+                        "createdAt": {
+                            "type": "string",
+                            "example": "2024-04-26T19:45:14.626Z"
+                        },
+                        "updatedAt": {
+                            "type": "string",
+                            "example": "2024-04-26T19:45:14.626Z"
+                        },
+                        "compraItens": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "example": "deba9054-d702-4e46-b510-56cbf22ac7ae"
+                                    },
+                                    "compraId": {
+                                        "type": "string",
+                                        "example": "adea68d3-ff25-4e7d-b4a3-d1de420fc9ef"
+                                    },
+                                    "produtoId": {
+                                        "type": "string",
+                                        "example": "4b3c2b4c-9af2-43cf-870e-34bfdefb4d37"
+                                    },
+                                    "quantidade": {
+                                        "type": "number",
+                                        "example": 2
+                                    },
+                                    "createdAt": {
+                                        "type": "string",
+                                        "example": "2024-04-26T19:45:14.626Z"
+                                    },
+                                    "updatedAt": {
+                                        "type": "string",
+                                        "example": "2024-04-26T19:45:14.626Z"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "ChangeLangDto": {
+            "type": "object",
+            "properties": {
+                "lang": {
+                    "type": "string",
+                    "example": "pt-BR"
+                }
+            }
+        }
+    }
+}
