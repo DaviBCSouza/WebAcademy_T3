@@ -1,4 +1,4 @@
-![image](https://github.com/DaviBCSouza/WebAcademy_T3/assets/117680329/4289980e-9ce1-4106-899b-0c35c226dd8a)
+![Logo Web Academy]([https://github.com/DaviBCSouza/WebAcademy_T3/assets/117680329/4289980e-9ce1-4106-899b-0c35c226dd8a](https://colabweb.ufam.edu.br/pluginfile.php/116293/mod_label/intro/logo_novo_site.png))
 
 > Status: Cursando ⚠️
 
