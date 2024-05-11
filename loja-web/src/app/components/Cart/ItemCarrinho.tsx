@@ -1,14 +1,17 @@
-export default function CartItem() {
-  const productTotal = (unitPrice: number, amount: number): number =>
-    unitPrice * amount;
+interface ICartItem {
+  item: CartItem;
+}
+
+export default function CartItem({ item }: Readonly<ICartItem>) {
+  const productTotal: number = item.price * item.amount;
 
   return (
-    <tr key="1">
-      <td>Notebook 1</td>
-      <td>R$ {(1500).toFixed(2)}</td>
-      <td>2</td>
+    <tr key={item.id}>
+      <td>{item.name}</td>
+      <td>R$ {item.price.toFixed(2)}</td>
+      <td>{item.amount}</td>
 
-      <td>R$ {productTotal(1500, 2).toFixed(2)}</td>
+      <td>R$ {productTotal.toFixed(2)}</td>
       <td>
         <button className="btn btn-danger btn-sm">Remover</button>
       </td>

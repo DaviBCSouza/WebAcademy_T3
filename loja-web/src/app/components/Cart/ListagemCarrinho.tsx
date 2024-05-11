@@ -1,6 +1,10 @@
 import CartItem from "./ItemCarrinho";
 
-export default function CartList() {
+interface ICartList {
+  items: CartItem[];
+}
+
+export default function CartList({ items }: Readonly<ICartList>) {
   return (
     <table className="table ">
       <thead>
@@ -13,7 +17,9 @@ export default function CartList() {
         </tr>
       </thead>
       <tbody>
-        <CartItem />
+        {items.map((item) => (
+          <CartItem key={item.id} item={item} />
+        ))}
       </tbody>
     </table>
   );

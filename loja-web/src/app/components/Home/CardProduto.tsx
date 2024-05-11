@@ -1,13 +1,17 @@
 import Image from "next/image";
 
-export default function ProductCard() {
+interface IProductCard {
+  product: Product;
+}
+
+export default function ProductCard({ product }: Readonly<IProductCard>) {
   return (
     <div className="col">
       <div className="card shadow-sm h-100">
         <Image
-          src="/placeholder.png"
+          src={product.photos[0].src}
           className="card-img-top"
-          alt="imagem placeholder"
+          alt={product.photos[0].title}
           width={300}
           height={320}
           style={{ height: "auto" }}
@@ -15,8 +19,8 @@ export default function ProductCard() {
         />
 
         <div className="card-body bg-light">
-          <h5 className="card-title">Notebook 1</h5>
-          <p className="card-text text-secondary">R$ 1500</p>
+          <h5 className="card-title">{product.name}</h5>
+          <p className="card-text text-secondary">R$ {product.price}</p>
           <button className="btn btn-dark d-block w-100" type="button">
             Adicionar no carrinho
           </button>
