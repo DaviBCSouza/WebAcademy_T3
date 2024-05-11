@@ -2,9 +2,13 @@ import CartItem from "./ItemCarrinho";
 
 interface ICartList {
   items: CartItem[];
+  removeCartItem: (id: string) => void;
 }
 
-export default function CartList({ items }: Readonly<ICartList>) {
+export default function CartList({
+  items,
+  removeCartItem,
+}: Readonly<ICartList>) {
   return (
     <table className="table ">
       <thead>
@@ -18,7 +22,7 @@ export default function CartList({ items }: Readonly<ICartList>) {
       </thead>
       <tbody>
         {items.map((item) => (
-          <CartItem key={item.id} item={item} />
+          <CartItem key={item.id} item={item} removeCartItem={removeCartItem} />
         ))}
       </tbody>
     </table>

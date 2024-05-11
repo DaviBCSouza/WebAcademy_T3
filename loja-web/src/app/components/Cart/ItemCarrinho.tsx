@@ -1,8 +1,12 @@
 interface ICartItem {
   item: CartItem;
+  removeCartItem: (id: string) => void;
 }
 
-export default function CartItem({ item }: Readonly<ICartItem>) {
+export default function CartItem({
+  item,
+  removeCartItem,
+}: Readonly<ICartItem>) {
   const productTotal: number = item.price * item.amount;
 
   return (
@@ -13,7 +17,13 @@ export default function CartItem({ item }: Readonly<ICartItem>) {
 
       <td>R$ {productTotal.toFixed(2)}</td>
       <td>
-        <button className="btn btn-danger btn-sm">Remover</button>
+        <button
+          className="btn btn-danger btn-sm"
+          type="button"
+          onClick={() => removeCartItem(item.id)}
+        >
+          Remover
+        </button>
       </td>
     </tr>
   );
