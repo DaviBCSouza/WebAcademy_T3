@@ -1,95 +1,142 @@
+"use client";
+
 import Image from "next/image";
-import styles from "./page.module.css";
 
-export default function Home() {
+export default function Produtos() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+    <>
+      <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">
+            Loja WA
           </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Abrir menu"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarCollapse">
+            <ul className="navbar-nav me-auto mb-2 mb-md-0">
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Início
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/carrinho">
+                  Carrinho
+                </a>
+              </li>
+            </ul>
+
+            <button className="btn btn-dark">Sair</button>
+          </div>
         </div>
-      </div>
+      </nav>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <main>
+        <div className="container p-5">
+          <div className="card mb-4">
+            <div className="card-body">
+              <h5 className="card-title mb-4 fw-light">Resumo do Carrinho</h5>
+              <p className="card-text fw-medium">Quantidade total: 10</p>
+              <p className="card-text fw-medium">
+                Valor total: R${(1500).toFixed(2)}
+              </p>
+            </div>
+          </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+          <h5 className="mb-3">Produtos disponíveis:</h5>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+            <div className="col">
+              <div className="card shadow-sm h-100">
+                <Image
+                  src="/placeholder.png"
+                  className="card-img-top"
+                  alt="imagem placeholder"
+                  width={300}
+                  height={320}
+                />
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+                <div className="card-body bg-light">
+                  <h5 className="card-title">Notebook 1</h5>
+                  <p className="card-text text-secondary">R$ 1500</p>
+                  <button className="btn btn-dark d-block w-100" type="button">
+                    Adicionar no carrinho
+                  </button>
+                </div>
+              </div>
+            </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <div className="col">
+              <div className="card shadow-sm h-100">
+                <Image
+                  src="/placeholder.png"
+                  className="card-img-top"
+                  alt="imagem placeholder"
+                  width={300}
+                  height={320}
+                />
+
+                <div className="card-body bg-light">
+                  <h5 className="card-title">Notebook 1</h5>
+                  <p className="card-text text-secondary">R$ 1500</p>
+                  <button className="btn btn-dark d-block w-100" type="button">
+                    Adicionar no carrinho
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col">
+              <div className="card shadow-sm h-100">
+                <Image
+                  src="/placeholder.png"
+                  className="card-img-top"
+                  alt="imagem placeholder"
+                  width={300}
+                  height={320}
+                />
+
+                <div className="card-body bg-light">
+                  <h5 className="card-title">Notebook 1</h5>
+                  <p className="card-text text-secondary">R$ 1500</p>
+                  <button className="btn btn-dark d-block w-100" type="button">
+                    Adicionar no carrinho
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="col">
+              <div className="card shadow-sm h-100">
+                <Image
+                  src="/placeholder.png"
+                  className="card-img-top"
+                  alt="imagem placeholder"
+                  width={300}
+                  height={320}
+                />
+
+                <div className="card-body bg-light">
+                  <h5 className="card-title">Notebook 1</h5>
+                  <p className="card-text text-secondary">R$ 1500</p>
+                  <button className="btn btn-dark d-block w-100" type="button">
+                    Adicionar no carrinho
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
   );
 }
