@@ -6,7 +6,10 @@ interface IProductCard {
   addCart: (product: Product) => void;
 }
 
-export default function ProductCard({ product, addCart }: IProductCard) {
+export default function ProductCard({
+  product,
+  addCart,
+}: Readonly<IProductCard>) {
   const router = useRouter();
 
   const productDetails = (productName: string) => {
