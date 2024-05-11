@@ -2,9 +2,13 @@ import Image from "next/image";
 
 interface IProductCard {
   product: Product;
+  addCart: (product: Product) => void;
 }
 
-export default function ProductCard({ product }: Readonly<IProductCard>) {
+export default function ProductCard({
+  product,
+  addCart,
+}: Readonly<IProductCard>) {
   return (
     <div className="col">
       <div className="card shadow-sm h-100">
@@ -21,7 +25,11 @@ export default function ProductCard({ product }: Readonly<IProductCard>) {
         <div className="card-body bg-light">
           <h5 className="card-title">{product.name}</h5>
           <p className="card-text text-secondary">R$ {product.price}</p>
-          <button className="btn btn-dark d-block w-100" type="button">
+          <button
+            className="btn btn-dark d-block w-100"
+            type="button"
+            onClick={() => addCart(product)}
+          >
             Adicionar no carrinho
           </button>
         </div>
