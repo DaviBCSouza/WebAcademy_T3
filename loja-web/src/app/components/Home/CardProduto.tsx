@@ -5,17 +5,14 @@ interface IProductCard {
   addCart: (product: Product) => void;
 }
 
-export default function ProductCard({
-  product,
-  addCart,
-}: Readonly<IProductCard>) {
+export default function ProductCard({ product, addCart }: IProductCard) {
   return (
     <div className="col">
       <div className="card shadow-sm h-100">
         <Image
-          src={product.photos[0].src}
+          src={product.fotos[0].src}
           className="card-img-top"
-          alt={product.photos[0].title}
+          alt={product.fotos[0].titulo}
           width={300}
           height={320}
           style={{ height: "auto" }}
@@ -23,8 +20,8 @@ export default function ProductCard({
         />
 
         <div className="card-body bg-light">
-          <h5 className="card-title">{product.name}</h5>
-          <p className="card-text text-secondary">R$ {product.price}</p>
+          <h5 className="card-title">{product.nome}</h5>
+          <p className="card-text text-secondary">R$ {product.preco}</p>
           <button
             className="btn btn-dark d-block w-100"
             type="button"

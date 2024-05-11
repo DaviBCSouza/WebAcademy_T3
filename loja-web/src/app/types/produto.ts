@@ -1,14 +1,14 @@
 interface Photo {
-  title: string;
+  titulo: string;
   src: string;
 }
 
 interface Product {
   id: string;
-  photos: Photo[];
-  name: string;
-  price: string;
-  description: string;
-  sold: string;
-  user_id: string;
+  fotos: Photo[];
+  nome: string;
+  preco: string;
+  descricao: string;
+  vendido: string;
+  usuario_id: string;
 }
