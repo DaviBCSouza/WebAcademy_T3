@@ -1,9 +1,15 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    router.push("/login");
+  };
 
   if (pathname === "/login" || pathname === "/cadastro") return null;
 
@@ -38,7 +44,9 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <button className="btn btn-dark">Sair</button>
+          <button className="btn btn-dark" type="button" onClick={handleLogout}>
+            Sair
+          </button>
         </div>
       </div>
     </nav>

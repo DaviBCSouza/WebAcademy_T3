@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ProductList from "./components/Home/ListagemProdutos";
+import ProtectedRouter from "./components/ProtectedRouter";
 import ItemSummary from "./components/ResumoCarrinho";
 
 export default function Products() {
@@ -14,11 +15,13 @@ export default function Products() {
   };
 
   return (
-    <main>
-      <div className="container p-5">
-        <ItemSummary totalPrice={totalPrice} totalAmount={totalAmount} />
-        <ProductList addCart={addCart} />
-      </div>
-    </main>
+    <ProtectedRouter>
+      <main>
+        <div className="container p-5">
+          <ItemSummary totalPrice={totalPrice} totalAmount={totalAmount} />
+          <ProductList addCart={addCart} />
+        </div>
+      </main>
+    </ProtectedRouter>
   );
 }

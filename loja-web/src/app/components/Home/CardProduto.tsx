@@ -13,7 +13,11 @@ export default function ProductCard({
   const router = useRouter();
 
   const productDetails = (productName: string) => {
-    router.push(`/produto/${productName}`);
+    const product = productName
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    router.push(`/produto/${product}`);
   };
 
   return (
