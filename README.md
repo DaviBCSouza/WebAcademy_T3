@@ -6,6 +6,6 @@
 
 </div>
 
-> Status: Desenvolvendo ⚠️
+> Status: Concluído ✅
 
 Branch criada para a execução do Trabalho Prático II da disciplina <b>Biblioteca Frontend REACT<b>
