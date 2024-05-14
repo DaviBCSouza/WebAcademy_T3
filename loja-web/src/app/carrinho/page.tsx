@@ -1,25 +1,68 @@
 "use client";
 
-import { useState } from "react";
+import { useReducer } from "react";
 import CartList from "../components/Cart/ListagemCarrinho";
 import ProtectedRouter from "../components/ProtectedRouter";
 import ItemSummary from "../components/ResumoCarrinho";
 import { mockCartItem } from "../mocks/itensCarrinho";
 
+type State = {
+  cartItems: CartItem[];
+};
+
+export type Action =
+  | { type: "aumentar_qtd"; id: string }
+  | { type: "diminuir_qtd"; id: string }
+  | { type: "remover"; id: string };
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "aumentar_qtd": {
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.id === action.id ? { ...item, amount: item.amount + 1 } : item
+        ),
+      };
+    }
+    case "diminuir_qtd": {
+      const itemToDecrement = state.cartItems.find(
+        (item) => item.id === action.id
+      );
+      if (!itemToDecrement || itemToDecrement.amount <= 0) {
+        return state;
+      }
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.id === action.id ? { ...item, amount: item.amount - 1 } : item
+        ),
+      };
+    }
+    case "remover": {
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((item) => item.id !== action.id),
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 export default function Cart() {
-  const [cartItems, setCartItems] = useState<CartItem[]>(mockCartItem);
+  const [state, dispatch] = useReducer(reducer, { cartItems: mockCartItem });
 
-  const removeCartItem = (id: string): void => {
-    const newCart = cartItems.filter((item) => item.id !== id);
-    setCartItems(newCart);
-  };
-
-  const totalPrice = cartItems.reduce(
+  const totalPrice = state.cartItems.reduce(
     (total, item) => total + item.price * item.amount,
     0
   );
 
-  const totalAmount = cartItems.reduce((total, item) => total + item.amount, 0);
+  const totalAmount = state.cartItems.reduce(
+    (total, item) => total + item.amount,
+    0
+  );
 
   return (
     <ProtectedRouter>
@@ -31,7 +74,7 @@ export default function Cart() {
                 Produtos selecionados
               </h5>
               <div className="table-responsive">
-                <CartList items={cartItems} removeCartItem={removeCartItem} />
+                <CartList items={state.cartItems} dispatch={dispatch} />
               </div>
             </div>
           </div>

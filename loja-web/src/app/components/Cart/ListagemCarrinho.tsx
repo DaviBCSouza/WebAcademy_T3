@@ -1,14 +1,13 @@
+import { Action } from "@/app/carrinho/page";
+import { Dispatch } from "react";
 import CartItem from "./ItemCarrinho";
 
 interface ICartList {
   items: CartItem[];
-  removeCartItem: (id: string) => void;
+  dispatch: Dispatch<Action>;
 }
 
-export default function CartList({
-  items,
-  removeCartItem,
-}: Readonly<ICartList>) {
+export default function CartList({ items, dispatch }: Readonly<ICartList>) {
   return (
     <table className="table ">
       <thead>
@@ -22,7 +21,7 @@ export default function CartList({
       </thead>
       <tbody>
         {items.map((item) => (
-          <CartItem key={item.id} item={item} removeCartItem={removeCartItem} />
+          <CartItem key={item.id} item={item} dispatch={dispatch} />
         ))}
       </tbody>
     </table>
