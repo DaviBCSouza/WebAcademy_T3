@@ -19,4 +19,4 @@
 - Fundamentos de Banco de Dados
 - Desenvolvimento de RESTful APIs
 - Contêineres
-- Cookies, Sessões e Autenticação
+- Biblioteca Frontend REACT
