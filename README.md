@@ -6,6 +6,6 @@
 
 </div>
 
-> Status: Concluído ✅
+> Status: Desenvolvendo ⚠️
 
-Branch criada para a execução do Trabalho Prático II da disciplina <b>Biblioteca Frontend REACT<b>
+Branch criada para a execução da atividade para compor a Nota I da disciplina <b>Gerenciamento de Estado<b>
