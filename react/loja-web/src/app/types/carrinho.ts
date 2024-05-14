@@ -1,6 +1,6 @@
-interface ItemCarrinho {
-  id: number;
-  nome: string;
-  preco: number;
-  quantidade: number;
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  amount: number;
 }

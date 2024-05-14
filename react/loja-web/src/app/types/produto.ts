@@ -1,14 +1,14 @@
-interface Foto {
+interface Photo {
   titulo: string;
   src: string;
 }
 
-interface Produto {
+interface Product {
   id: string;
-  fotos: Foto[];
+  fotos: Photo[];
   nome: string;
-  preco: number;
+  preco: string;
   descricao: string;
-  vendido: boolean;
+  vendido: string;
   usuario_id: string;
 }

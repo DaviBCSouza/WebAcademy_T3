@@ -1,37 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import ListagemProdutos from "./components/ListagemProdutos";
-import Navbar from "./components/Navbar";
-import ResumoCarrinho from "./components/ResumoCarrinho";
-import { mockProdutos } from "./mocks/produto";
+import ProductList from "./components/Home/ListagemProdutos";
+import ProtectedRouter from "./components/ProtectedRouter";
+import ItemSummary from "./components/ResumoCarrinho";
 
-export default function Produtos() {
-  const produtos = mockProdutos;
+export default function Products() {
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [totalAmount, setTotalAmount] = useState<number>(0);
 
-  const [quantidadeTotal, setQuantidadeTotal] = useState<number>(0);
-  const [precoTotal, setPrecoTotal] = useState<number>(0);
-
-  const adicionarAoCarrinho = (produto: Produto): void => {
-    setQuantidadeTotal(quantidadeTotal + 1);
-    setPrecoTotal(precoTotal + produto.preco);
+  const addCart = (product: Product): void => {
+    setTotalPrice(totalPrice + parseFloat(product.preco));
+    setTotalAmount(totalAmount + 1);
   };
 
   return (
-    <>
-      <Navbar />
+    <ProtectedRouter>
       <main>
-        <div className="container p-5 pb-0">
-          <ResumoCarrinho
-            quantidadeTotal={quantidadeTotal}
-            precoTotal={precoTotal}
-          />
-          <ListagemProdutos
-            produtos={produtos}
-            adicionarAoCarrinho={adicionarAoCarrinho}
-          />
+        <div className="container p-5">
+          <ItemSummary totalPrice={totalPrice} totalAmount={totalAmount} />
+          <ProductList addCart={addCart} />
         </div>
       </main>
-    </>
+    </ProtectedRouter>
   );
 }
