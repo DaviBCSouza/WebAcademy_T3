@@ -8,4 +8,4 @@
 
 > Status: Desenvolvendo ⚠️
 
-Branch criada para a execução da atividade para compor a Nota I da disciplina <b>Gerenciamento de Estado<b>
+Branch criada para a execução da atividade para compor a Nota II da disciplina <b>Gerenciamento de Estado<b>
