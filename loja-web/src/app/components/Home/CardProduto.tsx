@@ -1,5 +1,7 @@
+import { FavoritesContext } from "@/app/page";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 interface IProductCard {
   product: Product;
@@ -11,6 +13,7 @@ export default function ProductCard({
   addCart,
 }: Readonly<IProductCard>) {
   const router = useRouter();
+  const { favorites, setFavorites } = useContext(FavoritesContext);
 
   const productDetails = (productName: string) => {
     const product = productName
@@ -19,6 +22,12 @@ export default function ProductCard({
       .replace(/[\u0300-\u036f]/g, "");
     router.push(`/produto/${product}`);
   };
+
+  const addFavorite = (product: Product) => {
+    setFavorites((favorites) => [...favorites, product]);
+  };
+
+  const isFavorite = favorites.some((item) => item.id === product.id);
 
   return (
     <div className="col">
@@ -40,6 +49,14 @@ export default function ProductCard({
             onClick={() => addCart(product)}
           >
             Adicionar no carrinho
+          </button>
+          <button
+            className="btn btn-success d-block w-100 mt-2"
+            type="button"
+            onClick={() => addFavorite(product)}
+            disabled={isFavorite}
+          >
+            {isFavorite ? "Adicionado" : "Adicionar aos favoritos"}
           </button>
           <button
             className="btn btn-light d-block w-100 mt-2"

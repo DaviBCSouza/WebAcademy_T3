@@ -1,4 +1,7 @@
 import { useProductsList } from "@/app/hooks/useProductsList";
+import { FavoritesContext } from "@/app/page";
+import { useContext } from "react";
+import FavoriteSummary from "../Favorite/ResumoFavoritos";
 import ProductCard from "./CardProduto";
 
 interface IProductList {
@@ -7,6 +10,7 @@ interface IProductList {
 
 export default function ProductList({ addCart }: Readonly<IProductList>) {
   const { products, isPending, isError } = useProductsList();
+  const { favorites, setFavorites } = useContext(FavoritesContext);
 
   if (isPending) return <h5>Carregando...</h5>;
 
@@ -23,6 +27,12 @@ export default function ProductList({ addCart }: Readonly<IProductList>) {
           <ProductCard key={product.id} product={product} addCart={addCart} />
         ))}
       </div>
+
+      <FavoriteSummary
+        favorites={favorites}
+        addCart={addCart}
+        setFavorites={setFavorites}
+      />
     </>
   );
 }
