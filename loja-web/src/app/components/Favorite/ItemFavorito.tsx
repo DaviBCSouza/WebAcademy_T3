@@ -1,14 +1,15 @@
-import { Dispatch, SetStateAction } from "react";
+import { FavoritesContext } from "@/app/contexts/FavoritosProvider";
+import { useContext } from "react";
 
 interface IFavoriteItem {
   favoriteItem: Product;
-  setFavorites: Dispatch<SetStateAction<Product[]>>;
 }
 
 export default function FavoriteItem({
   favoriteItem,
-  setFavorites,
-}: IFavoriteItem) {
+}: Readonly<IFavoriteItem>) {
+  const { setFavorites } = useContext(FavoritesContext);
+
   const removeFavorite = (id: string) => {
     setFavorites((favorites) => favorites.filter((item) => item.id !== id));
   };

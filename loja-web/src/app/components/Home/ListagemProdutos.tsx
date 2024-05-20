@@ -1,6 +1,6 @@
 import { useProductsList } from "@/app/hooks/useProductsList";
-import { FavoritesContext } from "@/app/page";
 import { useContext } from "react";
+import { FavoritesContext } from "../../contexts/FavoritosProvider";
 import FavoriteSummary from "../Favorite/ResumoFavoritos";
 import ProductCard from "./CardProduto";
 
@@ -28,11 +28,7 @@ export default function ProductList({ addCart }: Readonly<IProductList>) {
         ))}
       </div>
 
-      <FavoriteSummary
-        favorites={favorites}
-        addCart={addCart}
-        setFavorites={setFavorites}
-      />
+      <FavoriteSummary addCart={addCart} />
     </>
   );
 }

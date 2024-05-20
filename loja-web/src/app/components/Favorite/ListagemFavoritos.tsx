@@ -1,15 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
+import { FavoritesContext } from "@/app/contexts/FavoritosProvider";
+import { useContext } from "react";
 import FavoriteItem from "./ItemFavorito";
 
-interface IFavoriteList {
-  favoriteProducts: Product[];
-  setFavorites: Dispatch<SetStateAction<Product[]>>;
-}
+export default function FavoriteList() {
+  const { favorites } = useContext(FavoritesContext);
 
-export default function FavoriteList({
-  favoriteProducts,
-  setFavorites,
-}: IFavoriteList) {
   return (
     <div className="card mb-4">
       <div className="row card-body">
@@ -24,12 +19,8 @@ export default function FavoriteList({
               </tr>
             </thead>
             <tbody>
-              {favoriteProducts.map((item) => (
-                <FavoriteItem
-                  key={item.id}
-                  favoriteItem={item}
-                  setFavorites={setFavorites}
-                />
+              {favorites.map((item) => (
+                <FavoriteItem key={item.id} favoriteItem={item} />
               ))}
             </tbody>
           </table>
