@@ -6,6 +6,6 @@
 
 </div>
 
-> Status: Desenvolvendo ⚠️
+> Status: Concluído ✅
 
 Branch criada para a execução da atividade para compor a Nota II da disciplina <b>Gerenciamento de Estado<b>
