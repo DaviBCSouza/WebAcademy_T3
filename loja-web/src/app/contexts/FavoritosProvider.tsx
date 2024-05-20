@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 interface FavoritesContextProps {
   favorites: Product[];
@@ -14,7 +14,9 @@ export const FavoritesContext = createContext<FavoritesContextProps>({
 
 export function FavoritesProvider({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   const [favorites, setFavorites] = useState<Product[]>([]);
 
   const value = useMemo(() => ({ favorites, setFavorites }), [favorites]);
@@ -25,3 +27,17 @@ export function FavoritesProvider({
     </FavoritesContext.Provider>
   );
 }
+
+export const useFavoritesContext = () => {
+  return useContext(FavoritesContext);
+};
+
+export const useFavoritesProducts = () => {
+  const { favorites } = useFavoritesContext();
+  return favorites;
+};
+
+export const useFavoriteProductVerify = (id: string) => {
+  const favoriteProduct = useFavoritesProducts();
+  return favoriteProduct.some((item) => item.id === id);
+};

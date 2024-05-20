@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import { FavoritesContext } from "../../contexts/FavoritosProvider";
+import {
+  useFavoriteProductVerify,
+  useFavoritesContext,
+} from "../../contexts/FavoritosProvider";
 
 interface IProductCard {
   product: Product;
@@ -13,7 +15,7 @@ export default function ProductCard({
   addCart,
 }: Readonly<IProductCard>) {
   const router = useRouter();
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { setFavorites } = useFavoritesContext();
 
   const productDetails = (productName: string) => {
     const product = productName
@@ -27,7 +29,7 @@ export default function ProductCard({
     setFavorites((favorites) => [...favorites, product]);
   };
 
-  const isFavorite = favorites.some((item) => item.id === product.id);
+  const isFavorite = useFavoriteProductVerify(product.id);
 
   return (
     <div className="col">

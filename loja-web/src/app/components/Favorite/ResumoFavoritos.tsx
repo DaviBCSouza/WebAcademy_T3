@@ -1,5 +1,4 @@
-import { FavoritesContext } from "@/app/contexts/FavoritosProvider";
-import { useContext } from "react";
+import { useFavoritesProducts } from "@/app/contexts/FavoritosProvider";
 import ProductCard from "../Home/CardProduto";
 
 interface IFavoriteSummary {
@@ -9,7 +8,7 @@ interface IFavoriteSummary {
 export default function FavoriteSummary({
   addCart,
 }: Readonly<IFavoriteSummary>) {
-  const { favorites } = useContext(FavoritesContext);
+  const favorites = useFavoritesProducts();
 
   return (
     <div className="mt-4">

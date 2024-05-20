@@ -1,9 +1,8 @@
-import { FavoritesContext } from "@/app/contexts/FavoritosProvider";
-import { useContext } from "react";
+import { useFavoritesProducts } from "@/app/contexts/FavoritosProvider";
 import FavoriteItem from "./ItemFavorito";
 
 export default function FavoriteList() {
-  const { favorites } = useContext(FavoritesContext);
+  const favorites = useFavoritesProducts();
 
   return (
     <div className="card mb-4">

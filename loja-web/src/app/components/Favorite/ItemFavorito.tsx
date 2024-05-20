@@ -1,5 +1,4 @@
-import { FavoritesContext } from "@/app/contexts/FavoritosProvider";
-import { useContext } from "react";
+import { useFavoritesContext } from "@/app/contexts/FavoritosProvider";
 
 interface IFavoriteItem {
   favoriteItem: Product;
@@ -8,7 +7,7 @@ interface IFavoriteItem {
 export default function FavoriteItem({
   favoriteItem,
 }: Readonly<IFavoriteItem>) {
-  const { setFavorites } = useContext(FavoritesContext);
+  const { setFavorites } = useFavoritesContext();
 
   const removeFavorite = (id: string) => {
     setFavorites((favorites) => favorites.filter((item) => item.id !== id));
