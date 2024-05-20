@@ -4,7 +4,6 @@ import { useState } from "react";
 import ProductList from "./components/Home/ListagemProdutos";
 import ProtectedRouter from "./components/ProtectedRouter";
 import ItemSummary from "./components/ResumoCarrinho";
-import { FavoritesProvider } from "./contexts/FavoritosProvider";
 
 export default function Products() {
   const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -20,9 +19,7 @@ export default function Products() {
       <main>
         <div className="container p-5">
           <ItemSummary totalPrice={totalPrice} totalAmount={totalAmount} />
-          <FavoritesProvider>
-            <ProductList addCart={addCart} />
-          </FavoritesProvider>
+          <ProductList addCart={addCart} />
         </div>
       </main>
     </ProtectedRouter>
