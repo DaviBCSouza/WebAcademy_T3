@@ -1,4 +1,5 @@
 import { useProductsList } from "@/app/hooks/useProductsList";
+import FavoriteSummary from "../Favorite/ResumoFavoritos";
 import ProductCard from "./CardProduto";
 
 interface IProductList {
@@ -23,6 +24,8 @@ export default function ProductList({ addCart }: Readonly<IProductList>) {
           <ProductCard key={product.id} product={product} addCart={addCart} />
         ))}
       </div>
+
+      <FavoriteSummary addCart={addCart} />
     </>
   );
 }

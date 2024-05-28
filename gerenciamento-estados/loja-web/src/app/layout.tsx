@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BootstrapClient from "./components/Home/BootstrapClient";
 import Navbar from "./components/Home/Navbar";
 import { ReactQueryClientProvider } from "./components/Home/ReactQueryClient";
+import { FavoritesProvider } from "./contexts/FavoritosProvider";
 
 export const metadata: Metadata = {
   title: "WA Loja",
@@ -16,14 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
       <body>
         <ReactQueryClientProvider>
-          <Navbar />
-          {children}
-          <BootstrapClient />
+          <FavoritesProvider>
+            <Navbar />
+            {children}
+            <BootstrapClient />
+          </FavoritesProvider>
         </ReactQueryClientProvider>
       </body>
     </html>
