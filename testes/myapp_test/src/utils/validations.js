@@ -5,10 +5,12 @@
  * @returns {string} - The first name extracted from the full name, or the name itself if no blank space is found.
  */
 function firstName(fullName) {
-  const blankSpace = fullName.lastIndexOf(' ');
+  fullName = fullName.trim(); // Removing additional spaces at the beginning and end of the name
+  const blankSpace = fullName.indexOf(" "); // Using 'indexOf' to find the first space
 
-  if (blankSpace === -1) return fullName;
-  else return fullName.slice(0, blankSpace);
+  if (blankSpace === -1)
+    return fullName; // If no space is found, the full name must be returned
+  else return fullName.slice(0, blankSpace); // Otherwise, return the first name, removing the first space
 }
 
 /**
@@ -29,8 +31,9 @@ function verifyStockAvailability(productType, qty) {
   };
 
   const availableStock = stock[productType];
-  if (availableStock === 0) return false;
-  else return true;
+  if (availableStock === undefined || availableStock < qty)
+    return false; // If the product is not listed or the desired quantity is less than available, it must return false
+  else return true; // Otherwise, it must return true, informing that the product is in stock
 }
 
 /**
@@ -50,7 +53,7 @@ function verifyStockAvailability(productType, qty) {
 function calculateTotalPrice(products) {
   let total = 0;
   for (let i = 0; i < products.length; i++) {
-    total = products[i].price;
+    total += products[i].price * products[i].quantity; // Fix: Accumulating the total value of the product
   }
   return total;
 }
