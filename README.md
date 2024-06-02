@@ -22,3 +22,4 @@
 - Biblioteca Frontend REACT
 - Gerenciamento de Estado
 - Fundamentos de Integração Contínua e Deploy de Aplicação Web
+- Fundamentos de Teste de Software
