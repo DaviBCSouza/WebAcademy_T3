@@ -1,5 +1,5 @@
-import CardProduto from "../CardProduto/CardProduto";
 import { useFavoritosContext } from "@/app/State/FavoritosProvider";
+import CardProduto from "../CardProduto/CardProduto";
 
 interface IListagemProdutos {
   produtos: Produto[];

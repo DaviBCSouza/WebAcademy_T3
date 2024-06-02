@@ -1,12 +1,12 @@
-import { screen, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import CardProduto from "../CardProduto";
+import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers";
 import { mockProdutos } from "@/app/mocks/produtos";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import {
   FavoritosProvider,
   useProdutoFavorito,
 } from "../../../State/FavoritosProvider";
-import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers";
+import CardProduto from "../CardProduto";
 
 jest.mock("../../../State/FavoritosProvider", () => ({
   ...jest.requireActual("../../../State/FavoritosProvider"),

@@ -38,7 +38,7 @@ export default function ItemFavorito({
         ).toFixed(2)}
       </td>
 
-      <td>{itemFavorito.desconto}%</td>
+      {itemFavorito.desconto > 0 ? <td>{itemFavorito.desconto}%</td> : null}
 
       <td>
         <button
