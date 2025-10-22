@@ -1,6 +1,6 @@
 ![image](https://github.com/DaviBCSouza/WebAcademy_T3/assets/117680329/a4731f13-26ac-44a4-9941-bd57a4de7922)
 
-> Status: Cursando ⚠️
+> Status: Concluido ✅
 
 ### Esse repositório é reservado aos exercícios das <br> disciplinas do curso Web Academy
 
@@ -23,3 +23,7 @@
 - Gerenciamento de Estado
 - Fundamentos de Integração Contínua e Deploy de Aplicação Web
 - Fundamentos de Teste de Software
+
+## Hands-on Concluído:
+
+- OptiHire
